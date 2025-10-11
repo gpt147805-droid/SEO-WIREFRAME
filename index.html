@@ -1,373 +1,628 @@
-<!doctype html>
+Awesome—here’s a single, clean, copy-pasteable **HTML file** with a logical, pitch-deck style flow and a polished UI. It’s fully responsive, uses CSS variables, has a sticky table of contents, smooth scrolling, scroll-spy, callouts, a timeline, and a final industry add-ons table.
+
+> Just paste this into an `.html` file and open it in your browser.
+
+```html
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Universal SEO Workflow — Revenue Integration (Wireframe)</title>
-  <style>
-    :root{
-      --bg:#f6f6f6;
-      --ink:#0f0f0f;
-      --muted:#6b7280;
-      --stroke:#e5e7eb;
-      --white:#ffffff;
-      --blue:#3b82f6;
-      --green:#22c55e;
-      --orange:#f59e0b;
-      --amber:#fbbf24;
-      --radius:16px;
-      --container:1200px;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";color:var(--ink);background:var(--bg);line-height:1.5}
-    .container{max-width:var(--container);margin:0 auto;padding:0 16px}
-    .shadow{box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06)}
-    .card{background:var(--white);border:1px solid var(--stroke);border-radius:var(--radius);padding:20px}
-    .chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#111}
-    .chip-dot{display:inline-block;width:10px;height:10px;border-radius:9999px}
-    header{position:sticky;top:0;background:rgba(255,255,255,.8);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--stroke);z-index:50}
-    header .brand{display:flex;align-items:center;gap:12px}
-    header .logo{width:36px;height:36px;border-radius:12px;background:var(--amber)}
-    h1{font-size:20px;margin:0}
-    p.sub{margin:2px 0 0;color:var(--muted);font-size:13px}
-    section{margin:28px 0}
-    h2{font-size:18px;margin:0 0 10px}
-    h3{font-size:16px;margin:0}
-    .grid{display:grid;gap:16px}
-    @media(min-width:768px){.grid-3{grid-template-columns:2fr 1fr 1fr}}
-    @media(min-width:1024px){.grid-3{grid-template-columns:2fr 1fr 1fr}}
-    .legend{display:none}
-    @media(min-width:640px){.legend{display:flex;align-items:center;gap:12px;font-size:12px}}
-    .pill{height:12px;border-radius:6px}
-    .mute{color:var(--muted)}
-    /* Timeline */
-    .timeline{position:relative}
-    .timeline-track{position:absolute;left:0;right:0;top:28px;height:4px;background:#e9ecef;border-radius:9999px}
-    .timeline-grid{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
-    @media(min-width:640px){.timeline-grid{grid-template-columns:repeat(3,1fr)}}
-    @media(min-width:1024px){.timeline-grid{grid-template-columns:repeat(9,1fr)}}
-    .step{position:relative;text-align:center}
-    .dot{width:40px;height:40px;border-radius:9999px;color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto;border:4px solid #fff;box-shadow:0 6px 16px rgba(0,0,0,.1);font-weight:600}
-    .label{margin-top:8px;font-size:12px}
-    /* Placeholders (wireframe effect) */
-    .ph{background:#efefef;border-radius:8px}
-    .ph.small{height:12px;width:110px;margin:6px auto 0}
-    .ph.box{height:64px}
-    /* Utilities */
-    .row{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .row-wrap{display:flex;flex-wrap:wrap;gap:10px}
-    .gap-6{gap:16px}
-    .btn{padding:10px 14px;border-radius:12px;border:1px solid var(--stroke);background:#fff;font-size:14px;cursor:pointer}
-    .btn.dark{background:#111;color:#fff;border-color:#111}
-    .callout{border:1px dashed #f2c94c;background:#fff7e6}
-    .list{padding-left:18px;margin:8px 0 0}
-    .list li{margin:4px 0}
-    .badge{display:inline-block;padding:2px 8px;border-radius:9999px;font-size:12px}
-    .b-blue{background:#eaf2ff;color:#1e40af}
-    .b-green{background:#eaf8ee;color:#065f46}
-    .b-orange{background:#fff3e6;color:#8a4b02}
-    .icon-swatch{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-    .sw{padding:10px;border:1px solid var(--stroke);border-radius:12px}
-    .sw .pill{width:70px}
-    .center{display:flex;align-items:center;justify-content:center;text-align:center}
-    .ring{position:relative;width:220px;height:220px;border:6px solid var(--amber);border-radius:9999px;margin:0 auto}
-    .ring:after{content:"";position:absolute;inset:18px;border:1px solid #fde68a;border-radius:9999px}
-    .mt-6{margin-top:16px}
-    .mb-2{margin-bottom:8px}
-    .mb-4{margin-bottom:16px}
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Universal SEO Workflow — With Revenue Integration</title>
+<meta name="description" content="Pitch-deck style HTML: Universal SEO Workflow with revenue integration for eCommerce, SaaS, and Local Businesses." />
+
+<style>
+/* ---------- THEME TOKENS ---------- */
+:root{
+  --bg: #0f1220;
+  --panel: #151931;
+  --panel-2:#0b0e1b;
+  --text: #f3f5ff;
+  --muted:#b5bdd6;
+  --brand:#7c9bff;
+  --brand-2:#5cf0d6;
+  --accent:#ffe07c;
+  --danger:#ff7c9a;
+  --ok:#91f2a8;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --radius: 18px;
+  --radius-sm: 12px;
+  --radius-lg: 28px;
+  --maxw: 1180px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:linear-gradient(180deg,var(--bg),#0c1022 40%, var(--panel-2) 100%);
+  color:var(--text); font:500 16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+}
+
+/* ---------- LAYOUT ---------- */
+.header{
+  position:relative; isolation:isolate; padding:64px 20px 24px; overflow:hidden;
+  background:
+    radial-gradient(1200px 400px at 70% -30%, rgba(124,155,255,.25), transparent 60%),
+    radial-gradient(900px 320px at -10% 0%, rgba(92,240,214,.12), transparent 50%);
+}
+.header-inner{max-width:var(--maxw); margin:0 auto;}
+.kicker{display:inline-flex; gap:8px; align-items:center; color:var(--brand-2); letter-spacing:.08em; font-size:13px; text-transform:uppercase;}
+.h1{font-size: clamp(28px, 5vw, 48px); line-height:1.15; margin:8px 0 14px; font-weight:800;}
+.h-sub{max-width:800px; color:var(--muted); font-size: clamp(15px, 2.2vw, 18px)}
+
+.hero-strip{
+  margin-top:28px; display:flex; flex-wrap:wrap; gap:14px;
+}
+.badge{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:10px 14px; background:linear-gradient(180deg,#131835,#0c1127);
+  border-radius:999px; border:1px solid #1f2649; box-shadow: var(--shadow);
+  color:#c8d3ff; font-size:14px;
+}
+.badge svg{width:18px; height:18px}
+
+/* KPI FLOW */
+.kpi{
+  margin-top:22px; padding:14px; border-radius:var(--radius);
+  background:linear-gradient(180deg,#0f1430,#0b0f24); border:1px solid #1f2649;
+}
+.kpi-row{display:grid; grid-template-columns: repeat(7, 1fr); gap:10px; align-items:center}
+.kpi-chip{
+  text-align:center; padding:12px 10px; border-radius:14px; background: #12183a;
+  border:1px solid #1f2649; font-weight:700; font-size:13px;
+}
+.kpi-arrow{display:flex; align-items:center; justify-content:center; color:#7f8cc9; font-size:20px}
+
+/* ---------- MAIN GRID ---------- */
+.main{
+  display:grid; grid-template-columns: 280px 1fr; gap:22px; max-width:var(--maxw); margin:24px auto; padding:0 20px 80px;
+}
+@media (max-width: 980px){ .main{grid-template-columns: 1fr} }
+
+.toc{
+  position:sticky; top:16px; align-self:start; background:linear-gradient(180deg,#0f1430,#0c1127);
+  border:1px solid #1f2649; border-radius:var(--radius); padding:14px; box-shadow: var(--shadow);
+}
+.toc h3{margin:4px 6px 6px; font-size:13px; color:#9fb0ff; text-transform:uppercase; letter-spacing:.06em}
+.toc a{
+  display:flex; align-items:center; gap:10px; padding:10px 10px; margin:4px 0; border-radius:12px;
+  color:#cfd7ff; text-decoration:none; border:1px solid transparent; font-size:14px;
+}
+.toc a:hover{background:#11183c; border-color:#233066}
+.toc a.active{background:linear-gradient(180deg,#12183b,#0d132c); border-color:#2f3c78; color:#fff}
+
+/* ---------- SECTIONS ---------- */
+.section{
+  scroll-margin-top: 90px;
+  padding:16px; border-radius:var(--radius-lg);
+  background: linear-gradient(180deg,#101635,#0b1024);
+  border:1px solid #202858; box-shadow: var(--shadow); margin-bottom:22px;
+}
+.section-head{
+  display:flex; gap:14px; align-items:center; margin-bottom:12px;
+}
+.step{
+  display:grid; place-items:center; width:38px; height:38px; border-radius:10px;
+  background:linear-gradient(180deg,#151c43,#0e1636); border:1px solid #26306b; color:#b9c6ff; font-weight:800;
+}
+.section h2{margin:0; font-size:22px}
+.section .goal{
+  margin:6px 0 12px; color:var(--muted); font-size:15px
+}
+.grid-2{display:grid; grid-template-columns: 1.2fr .8fr; gap:16px}
+@media (max-width: 900px){ .grid-2{grid-template-columns: 1fr} }
+
+.card{
+  background:linear-gradient(180deg,#0f1535,#0c122c);
+  border:1px solid #212a5f; border-radius:16px; padding:14px;
+}
+.card h4{margin:4px 0 8px; font-size:15px; color:#b9c6ff; letter-spacing:.02em}
+.card ul{margin:0; padding-left:18px}
+.card li{margin:8px 0}
+.outcome{
+  display:flex; align-items:center; gap:10px; margin-top:10px; padding:10px 12px;
+  background:#0d1535; border:1px dashed #2a377a; border-radius:14px; color:#cfe3ff;
+}
+
+.callout{
+  margin-top:12px; padding:12px; border-radius:16px; border:1px solid #2d386f;
+  background:linear-gradient(180deg,#0d1331,#0a0f26);
+}
+.callout strong{color:#9ad1ff}
+
+/* TIMELINE (3–6–12 mo) */
+.timeline{
+  display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; margin-top:8px
+}
+.ti{
+  background:linear-gradient(180deg,#10183d,#0c122c); border:1px solid #263270; border-radius:16px; padding:12px;
+}
+.ti h5{margin:0 0 6px; font-size:13px; color:#b1c4ff; letter-spacing:.04em}
+
+/* ROI BLOCK */
+.roi{
+  display:grid; grid-template-columns:1fr 1fr; gap:16px;
+}
+@media (max-width: 900px){ .roi{grid-template-columns:1fr} }
+.kpi-box{
+  padding:12px; border-radius:16px; border:1px solid #2b396f; background:linear-gradient(180deg,#10183c,#0c122c);
+}
+.kpi-box code{
+  background:#0a1026; padding:6px 8px; border:1px solid #22306a; border-radius:10px; color:#e9f3ff; display:inline-block
+}
+.kpi-mini{
+  display:grid; grid-template-columns: repeat(4, 1fr); gap:8px; margin-top:10px
+}
+.kpi-mini .mini{
+  text-align:center; font-size:12px; background:#0f1638; border:1px solid #233066; padding:8px; border-radius:10px
+}
+
+/* TABLE */
+.table{
+  width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border-radius:16px;
+  border:1px solid #2a346a; margin-top:10px
+}
+.table th, .table td{padding:12px 14px; border-bottom:1px solid #222c62; text-align:left; vertical-align:top}
+.table th{background:#11183a; color:#cfe3ff; font-size:14px}
+.table tr:last-child td{border-bottom:none}
+.table tr:nth-child(even) td{background:#0f1638}
+
+/* FOOTER */
+.footer{
+  max-width:var(--maxw); margin:30px auto 80px; padding:0 20px;
+  display:flex; align-items:center; justify-content:space-between; color:#aab6e8; font-size:14px
+}
+.cta{
+  display:inline-flex; gap:10px; align-items:center; padding:12px 16px; border-radius:12px;
+  background:linear-gradient(180deg,#1e275b,#141b43); border:1px solid #31409a; color:#e8edff; text-decoration:none; font-weight:700;
+  box-shadow:var(--shadow)
+}
+.cta:hover{filter:brightness(1.05)}
+
+/* UTIL */
+.tag{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; font-size:12px; border:1px solid #2a356f; background:#0f1638; color:#cfe3ff}
+
+/* Scroll progress */
+.progress{
+  position:fixed; left:0; top:0; height:3px; width:0%;
+  background:linear-gradient(90deg,var(--brand),var(--brand-2)); z-index:9999; box-shadow:0 0 10px rgba(124,155,255,.8)
+}
+</style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="container" style="padding:12px 16px;display:flex;align-items:center;justify-content:space-between;">
-      <div class="brand">
-        <div class="logo"></div>
+<div class="progress" id="progress"></div>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="kicker">Universal SEO Workflow · Revenue Integrated</div>
+    <h1 class="h1">From Search to Sales: A Revenue-First SEO Playbook</h1>
+    <p class="h-sub">A pitch-ready framework that works for eCommerce, SaaS, and Local Businesses — clearly mapping
+      <strong>SEO actions</strong> to <strong>traffic</strong>, <strong>conversions</strong>, and <strong>revenue growth</strong>.</p>
+
+    <div class="hero-strip">
+      <div class="badge" title="Data-Driven">
+        <!-- bar icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18" stroke-width="1.5"/><path d="M7 17v-5m4 5V7m4 10v-8" stroke-width="1.5"/></svg>
+        Data-Driven
+      </div>
+      <div class="badge" title="Revenue Mapping">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3v18M7 8h7a3 3 0 1 1 0 6H9a3 3 0 1 0 0 6h7" stroke-width="1.5"/></svg>
+        Revenue Mapping
+      </div>
+      <div class="badge" title="Compounding Growth">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 14l5-5 4 4 7-7" stroke-width="1.6"/><path d="M4 20h16" stroke-width="1.2"/></svg>
+        Compounding Growth
+      </div>
+    </div>
+
+    <div class="kpi" aria-label="SEO to Revenue pipeline">
+      <div class="kpi-row">
+        <div class="kpi-chip">SEO Action</div>
+        <div class="kpi-arrow">➜</div>
+        <div class="kpi-chip">Traffic Growth</div>
+        <div class="kpi-arrow">➜</div>
+        <div class="kpi-chip">Conversion Lift</div>
+        <div class="kpi-arrow">➜</div>
+        <div class="kpi-chip">Revenue</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+  <!-- TOC -->
+  <nav class="toc" aria-label="Table of contents">
+    <h3>Workflow</h3>
+    <a href="#s1">1. Discovery & Audit</a>
+    <a href="#s2">2. Strategy & Roadmap</a>
+    <a href="#s25">3. Revenue Mapping & Forecast</a>
+    <a href="#s3">4. On-Page Optimization</a>
+    <a href="#s4">5. Content Creation & Optimization</a>
+    <a href="#s5">6. Technical SEO</a>
+    <a href="#s6">7. Off-Page & Links</a>
+    <a href="#s7">8. Analytics & Reporting</a>
+    <a href="#s8">9. Continuous Optimization & A/B</a>
+    <a href="#s9">10. SEO → Revenue Growth Loop</a>
+    <h3>Fit</h3>
+    <a href="#addons">Industry Add-Ons</a>
+  </nav>
+
+  <!-- CONTENT -->
+  <div>
+    <!-- 1 -->
+    <section id="s1" class="section" aria-labelledby="s1h">
+      <div class="section-head">
+        <div class="step">1</div>
         <div>
-          <h1>Universal SEO Workflow</h1>
-          <p class="sub">SEO → Traffic → Conversions → Revenue Growth</p>
-        </div>
-      </div>
-      <div class="legend">
-        <span class="chip"><span class="chip-dot" style="background:var(--blue)"></span>Strategy</span>
-        <span class="chip"><span class="chip-dot" style="background:var(--green)"></span>Optimization</span>
-        <span class="chip"><span class="chip-dot" style="background:var(--orange)"></span>Revenue & Reporting</span>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="container">
-    <div class="grid grid-3">
-      <div class="card shadow">
-        <h2>Overview</h2>
-        <p class="mute">Wireframe demonstrating the flow from discovery to optimization with revenue mapping.</p>
-        <div class="icon-swatch mt-6">
-          <div class="sw"><div class="pill" style="background:#bfdbfe"></div><p class="mute" style="font-size:12px;margin:8px 0 0;">Strategy Block</p></div>
-          <div class="sw"><div class="pill" style="background:#bbf7d0"></div><p class="mute" style="font-size:12px;margin:8px 0 0;">Optimization Block</p></div>
-          <div class="sw"><div class="pill" style="background:#fed7aa"></div><p class="mute" style="font-size:12px;margin:8px 0 0;">Revenue Block</p></div>
-          <div class="sw"><div class="pill" style="background:#fde68a"></div><p class="mute" style="font-size:12px;margin:8px 0 0;">Loop Connector</p></div>
+          <h2 id="s1h">Discovery & Audit</h2>
+          <p class="goal">Goal: establish baseline SEO health and revenue potential using facts, not guesses.</p>
         </div>
       </div>
 
-      <div class="card shadow callout">
-        <h3>Golden Loop</h3>
-        <div class="ring center mt-6">
-          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0 20px;font-size:14px;">
-            SEO Efforts → Measurable ROI → Sustainable Growth
-          </div>
-        </div>
-        <p class="mute" style="font-size:12px;margin-top:10px;">Centerpiece to connect actions to money.</p>
-      </div>
-
-      <div class="card shadow">
-        <h3>Legend</h3>
-        <div class="row-wrap mt-6">
-          <span class="badge b-blue">Discovery / Strategy</span>
-          <span class="badge b-green">Execution</span>
-          <span class="badge b-orange">Revenue & Reporting</span>
-        </div>
-        <div class="ph box mt-6"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Timeline -->
-  <section class="container">
-    <h2 class="mb-2">End-to-End Timeline</h2>
-    <div class="timeline card shadow">
-      <div class="timeline-track"></div>
-      <div class="timeline-grid">
-        <div class="step">
-          <div class="dot" style="background:var(--blue)">1</div>
-          <div class="label"><div class="ph small"></div>Discovery & Audit</div>
-        </div>
-        <div class="step">
-          <div class="dot" style="background:var(--blue)">2</div>
-          <div class="label"><div class="ph small"></div>Strategy & Roadmap</div>
-        </div>
-        <div class="step">
-          <div class="dot" style="background:var(--orange)">2.5</div>
-          <div class="label"><div class="ph small"></div>Revenue Mapping</div>
-        </div>
-        <div class="step">
-          <div class="dot" style="background:var(--green)">3</div>
-          <div class="label"><div class="ph small"></div>On-Page</div>
-        </div>
-        <div class="step">
-          <div class="dot" style="background:var(--green)">4</div>
-          <div class="label"><div class="ph small"></div>Content</div>
-        </div>
-        <div class="step">
-          <div class="dot" style="background:var(--green)">5</div>
-          <div class="label"><div class="ph small"></div>Technical</div>
-        </div>
-        <div class="step">
-          <div class="dot" style="background:var(--green)">6</div>
-          <div class="label"><div class="ph small"></div>Off-Page</div>
-        </div>
-        <div class="step">
-          <div class="dot" style="background:var(--orange)">7</div>
-          <div class="label"><div class="ph small"></div>Analytics</div>
-        </div>
-        <div class="step">
-          <div class="dot" style="background:var(--green)">8</div>
-          <div class="label"><div class="ph small"></div>Continuous Opt.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sections Grid -->
-  <section class="container">
-    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr));">
-      <!-- 1 -->
-      <div class="card shadow">
-        <div class="row mb-2">
-          <div class="chip"><span class="chip-dot" style="background:var(--blue)"></span><strong>1. Discovery & Audit</strong></div>
-        </div>
-        <ul class="list">
-          <li>Tech, content & backlink audit</li>
-          <li>Competitor traffic & revenue benchmarks</li>
-          <li>Keyword gap & intent mapping</li>
-        </ul>
-        <div class="row mt-6">
-          <span class="mute" style="font-size:12px">Output: SEO Health Report</span>
-          <span class="badge b-green">Find revenue leaks</span>
-        </div>
-      </div>
-
-      <!-- 2 -->
-      <div class="card shadow">
-        <div class="row mb-2">
-          <div class="chip"><span class="chip-dot" style="background:var(--blue)"></span><strong>2. Strategy & Roadmap</strong></div>
-        </div>
-        <ul class="list">
-          <li>Keyword clusters by intent</li>
-          <li>Audience segmentation</li>
-          <li>3–6–12 month plan</li>
-        </ul>
-        <div class="ph box mt-6"></div>
-        <div class="row mt-6">
-          <span class="mute" style="font-size:12px">Output: SEO Blueprint</span>
-          <span class="mute" style="font-size:12px">Milestones</span>
-        </div>
-      </div>
-
-      <!-- 2.5 -->
-      <div class="card shadow">
-        <div class="row mb-2">
-          <div class="chip"><span class="chip-dot" style="background:var(--orange)"></span><strong>2.5 Revenue Mapping ⭐</strong></div>
-        </div>
-        <ul class="list">
-          <li>Identify money pages & keywords</li>
-          <li>Estimate traffic → leads → revenue</li>
-          <li>ROI model: Traffic × CTR × CR × AOV</li>
-          <li>Define ROI%, CPA, revenue targets</li>
-        </ul>
-        <div class="card" style="border-color:#fed7aa;background:#fff7ed;margin-top:12px">Output: Forecast Dashboard</div>
-      </div>
-
-      <!-- 3 -->
-      <div class="card shadow">
-        <div class="row mb-2">
-          <div class="chip"><span class="chip-dot" style="background:var(--green)"></span><strong>3. On-Page Optimization</strong></div>
-        </div>
-        <ul class="list">
-          <li>Meta, headings, copy</li>
-          <li>Internal linking & IA</li>
-          <li>Mobile, schema, speed</li>
-        </ul>
-        <div class="row mt-6"><span class="badge b-green">Better UX → higher CVR</span></div>
-      </div>
-
-      <!-- 4 -->
-      <div class="card shadow">
-        <div class="row mb-2">
-          <div class="chip"><span class="chip-dot" style="background:var(--green)"></span><strong>4. Content Creation</strong></div>
-        </div>
-        <ul class="list">
-          <li>Blogs & landing pages</li>
-          <li>Update outdated pages</li>
-          <li>CTAs, visuals, internal links</li>
-        </ul>
-        <div class="row mt-6">
-          <span class="mute" style="font-size:12px">Output: Content Calendar</span>
-          <span class="mute" style="font-size:12px">Published assets</span>
-        </div>
-      </div>
-
-      <!-- 5 -->
-      <div class="card shadow">
-        <div class="row mb-2">
-          <div class="chip"><span class="chip-dot" style="background:var(--green)"></span><strong>5. Technical SEO</strong></div>
-        </div>
-        <ul class="list">
-          <li>Fix crawl errors & duplicates</li>
-          <li>Improve Core Web Vitals</li>
-          <li>Sitemaps & indexing</li>
-        </ul>
-        <div class="row mt-6"><span class="mute" style="font-size:12px">Output: Technical Health Report</span></div>
-      </div>
-
-      <!-- 6 -->
-      <div class="card shadow">
-        <div class="row mb-2">
-          <div class="chip"><span class="chip-dot" style="background:var(--green)"></span><strong>6. Off-Page & Links</strong></div>
-        </div>
-        <ul class="list">
-          <li>High-quality backlinks & PR</li>
-          <li>Local citations & directories</li>
-          <li>Brand mentions & digital PR</li>
-        </ul>
-        <div class="row mt-6"><span class="mute" style="font-size:12px">Output: Authority Growth Report</span></div>
-      </div>
-
-      <!-- 7 -->
-      <div class="card shadow">
-        <div class="row mb-2">
-          <div class="chip"><span class="chip-dot" style="background:var(--orange)"></span><strong>7. Analytics & Reporting</strong></div>
-        </div>
-        <ul class="list">
-          <li>GA4 & Search Console integration</li>
-          <li>Keyword, traffic, conversion analysis</li>
-          <li>Organic revenue attribution</li>
-        </ul>
-        <div class="card" style="border-color:#fed7aa;background:#fff7ed;margin-top:12px">Output: Monthly Performance Dashboard</div>
-      </div>
-
-      <!-- 8 -->
-      <div class="card shadow">
-        <div class="row mb-2">
-          <div class="chip"><span class="chip-dot" style="background:var(--green)"></span><strong>8. Continuous Optimization</strong></div>
-        </div>
-        <ul class="list">
-          <li>Quarterly refreshes</li>
-          <li>A/B test titles, CTAs, layouts</li>
-          <li>Monitor competitors & gaps</li>
-        </ul>
-        <div class="row mt-6"><span class="mute" style="font-size:12px">Output: Optimization Log + Next-Phase Plan</span></div>
-      </div>
-
-      <!-- 9 Growth Loop -->
-      <div class="card shadow" style="grid-column:1/-1">
-        <div class="row mb-2">
-          <div class="chip"><span class="chip-dot" style="background:var(--orange)"></span><strong>9. SEO → Revenue Growth Loop</strong></div>
-        </div>
-        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px">
-          <div class="card callout">
-            <div class="pill" style="background:var(--amber);width:120px"></div>
-            <p class="mt-6">Quarterly ROI summary, compounding growth, reinvestment plan.</p>
-          </div>
-          <div class="card">
-            <div class="ph small"></div>
-            <p class="mt-6">Flow: SEO Action → Traffic Growth → Conversion Optimization → Revenue Growth → Reinvestment → More Growth.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Optional Add-ons -->
-  <section class="container">
-    <div class="card shadow">
-      <div class="row mb-4">
-        <h3>Optional Add-ons by Industry</h3>
-      </div>
-      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
+      <div class="grid-2">
         <div class="card">
-          <div class="ph small"></div>
-          <ul class="list">
-            <li>ROI by product/category</li>
-            <li>Product schema</li>
+          <h4>What we assess</h4>
+          <ul>
+            <li>Technical, content, and backlink audit</li>
+            <li>Competitor benchmarking (traffic, SERP share, monetization)</li>
+            <li>Keyword gap & intent mapping across the funnel</li>
+          </ul>
+          <div class="outcome">📄 Output: SEO Health Report + Prioritized Growth Opportunities</div>
+        </div>
+        <div class="callout">
+          <strong>Why it matters:</strong> Early detection of leaks and missed demand prevents wasted spend and
+          reveals the shortest path to revenue lift.
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 -->
+    <section id="s2" class="section" aria-labelledby="s2h">
+      <div class="section-head">
+        <div class="step">2</div>
+        <div>
+          <h2 id="s2h">Strategy & Roadmap</h2>
+          <p class="goal">Goal: align SEO with business goals through a time-boxed plan.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4>Strategy pillars</h4>
+          <ul>
+            <li>Keyword strategy by topical clusters & search intent</li>
+            <li>Audience segmentation & persona journeys</li>
+            <li>Channel alignment with sales cycle and offers</li>
           </ul>
         </div>
         <div class="card">
-          <div class="ph small"></div>
-          <ul class="list">
-            <li>Organic → Demo → Paid tracking</li>
-            <li>Trial-to-paid ratio</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="ph small"></div>
-          <ul class="list">
-            <li>GMB + call tracking</li>
-            <li>In-store visits</li>
-          </ul>
+          <h4>Execution timeline</h4>
+          <div class="timeline">
+            <div class="ti">
+              <h5>Months 0–3</h5>
+              Quick wins, fixes, foundation, first content set.
+            </div>
+            <div class="ti">
+              <h5>Months 3–6</h5>
+              Cluster build-out, link velocity, CRO experiments.
+            </div>
+            <div class="ti">
+              <h5>Months 6–12</h5>
+              Scale content, authority, and compounding growth.
+            </div>
+          </div>
+          <div class="outcome">🧭 Output: SEO Blueprint + Milestone Plan</div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Footer -->
-  <footer style="background:#fff;border-top:1px solid var(--stroke);">
-    <div class="container" style="padding:16px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap">
-      <div class="row">
-    
+      <div class="callout"><strong>Why it matters:</strong> Everyone sees the big picture and how each sprint
+        contributes to commercial outcomes.</div>
+    </section>
+
+    <!-- 2.5 -->
+    <section id="s25" class="section" aria-labelledby="s25h">
+      <div class="section-head">
+        <div class="step">★</div>
+        <div>
+          <h2 id="s25h">Revenue Mapping & Goal Forecasting</h2>
+          <p class="goal">Goal: tie SEO activities to financial metrics the board cares about.</p>
+        </div>
       </div>
-    </div>
-  </footer>
+
+      <div class="roi">
+        <div class="kpi-box">
+          <h4>Identify “money pages” & KPIs</h4>
+          <ul>
+            <li>High-value keywords, product/solution pages, and BOFU assets</li>
+            <li>Define success: ROI %, CPA, pipeline value, MRR/Orders per month</li>
+          </ul>
+          <div class="kpi-mini">
+            <div class="mini">CTR</div>
+            <div class="mini">CVR</div>
+            <div class="mini">AOV / LTV</div>
+            <div class="mini">Revenue</div>
+          </div>
+        </div>
+        <div class="kpi-box">
+          <h4>ROI model</h4>
+          <p>Forecast using:</p>
+          <p><code>Projected Revenue = Traffic × CTR × Conversion Rate × AOV</code></p>
+          <div class="outcome">📊 Output: SEO → Revenue Forecast Dashboard</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Why it matters:</strong> Moves the conversation from rankings to revenue. Builds executive confidence and
+        sets investment guardrails.
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section id="s3" class="section" aria-labelledby="s3h">
+      <div class="section-head">
+        <div class="step">3</div>
+        <div>
+          <h2 id="s3h">On-Page Optimization</h2>
+          <p class="goal">Goal: make key pages rankable and conversion-ready.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4>Includes</h4>
+          <ul>
+            <li>Meta, headings, copy aligned to intent</li>
+            <li>Internal linking & architecture improvements</li>
+            <li>Mobile, schema, CWV & speed upgrades</li>
+          </ul>
+          <div class="outcome">🧩 Output: Optimized & Crawl-Ready Pages</div>
+        </div>
+        <div class="callout">
+          <strong>Revenue angle:</strong> Better UX and faster pages reduce drop-offs and lift conversion rates.
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 -->
+    <section id="s4" class="section" aria-labelledby="s4h">
+      <div class="section-head">
+        <div class="step">4</div>
+        <div>
+          <h2 id="s4h">Content Creation & Optimization</h2>
+          <p class="goal">Goal: attract qualified demand and move users down-funnel.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4>Includes</h4>
+          <ul>
+            <li>Topic clusters: blogs, hubs, landing pages</li>
+            <li>Refresh outdated winners; prune thin content</li>
+            <li>Stronger CTAs, visuals, internal pathways</li>
+          </ul>
+          <div class="outcome">🗓️ Output: SEO Content Calendar + Published Assets</div>
+        </div>
+        <div class="callout">
+          <strong>Revenue angle:</strong> Every asset has a job — capture, nurture, or convert. No “content for content’s sake”.
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 -->
+    <section id="s5" class="section" aria-labelledby="s5h">
+      <div class="section-head">
+        <div class="step">5</div>
+        <div>
+          <h2 id="s5h">Technical SEO</h2>
+          <p class="goal">Goal: remove crawl/index friction and deliver speed & stability.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4>Includes</h4>
+          <ul>
+            <li>Fix crawl errors, broken/duplicate content</li>
+            <li>Improve Core Web Vitals, mobile usability</li>
+            <li>Optimize sitemaps, robots, indexation</li>
+          </ul>
+          <div class="outcome">🧪 Output: Technical Health Report</div>
+        </div>
+        <div class="callout">
+          <strong>Revenue angle:</strong> Fast, reliable pages retain more users, multiplying the value of every click.
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 -->
+    <section id="s6" class="section" aria-labelledby="s6h">
+      <div class="section-head">
+        <div class="step">6</div>
+        <div>
+          <h2 id="s6h">Off-Page SEO & Link Building</h2>
+          <p class="goal">Goal: earn authority, trust, and visibility.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4>Includes</h4>
+          <ul>
+            <li>Quality backlinks via outreach & digital PR</li>
+            <li>Local citations & niche directories</li>
+            <li>Brand mentions and reviews</li>
+          </ul>
+          <div class="outcome">🔗 Output: Link Quality & Authority Growth Report</div>
+        </div>
+        <div class="callout">
+          <strong>Revenue angle:</strong> More authority → higher rankings → higher-intent traffic → more sales.
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 -->
+    <section id="s7" class="section" aria-labelledby="s7h">
+      <div class="section-head">
+        <div class="step">7</div>
+        <div>
+          <h2 id="s7h">Analytics & Reporting</h2>
+          <p class="goal">Goal: show the impact of SEO on traffic, pipeline, and revenue.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4>Includes</h4>
+          <ul>
+            <li>GA4 + Search Console integration & goals</li>
+            <li>Keyword, traffic, and conversion tracking</li>
+            <li>Organic revenue attribution (eComm/Lead value)</li>
+          </ul>
+          <div class="outcome">📈 Output: Monthly Performance Dashboard</div>
+        </div>
+        <div class="callout">
+          <strong>Revenue angle:</strong> Monthly proof of uplift from organic, with clear winners to double down on.
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 -->
+    <section id="s8" class="section" aria-labelledby="s8h">
+      <div class="section-head">
+        <div class="step">8</div>
+        <div>
+          <h2 id="s8h">Continuous Optimization & A/B Testing</h2>
+          <p class="goal">Goal: compound gains with iterative improvements.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4>Includes</h4>
+          <ul>
+            <li>Quarterly refresh of top pages</li>
+            <li>A/B tests on titles, CTAs, layouts</li>
+            <li>Competitor watch & new keyword discovery</li>
+          </ul>
+          <div class="outcome">🛠️ Output: Optimization Log + Next-Phase Recommendations</div>
+        </div>
+        <div class="callout">
+          <strong>Revenue angle:</strong> Testing squeezes more value out of existing traffic and protects ROI over time.
+        </div>
+      </div>
+    </section>
+
+    <!-- 9 -->
+    <section id="s9" class="section" aria-labelledby="s9h">
+      <div class="section-head">
+        <div class="step">9</div>
+        <div>
+          <h2 id="s9h">SEO → Revenue Growth Loop</h2>
+          <p class="goal">Goal: visualize compounding growth and reinvestment.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h4>Quarterly loop</h4>
+        <ul>
+          <li>Summarize revenue performance from organic</li>
+          <li>Spot compounding areas (content & SERP momentum)</li>
+          <li>Reinvest in high-ROI levers (content, outreach, CRO)</li>
+        </ul>
+        <div class="outcome">♻️ Output: Quarterly ROI Summary + Future Growth Plan</div>
+      </div>
+
+      <div class="callout">
+        <span class="tag">Growth Flow</span>
+        <div style="margin-top:8px">SEO Action → Traffic Growth → Conversion Optimization → Revenue Growth → Reinvestment → More Growth</div>
+      </div>
+    </section>
+
+    <!-- ADDONS -->
+    <section id="addons" class="section" aria-labelledby="addonsh">
+      <div class="section-head">
+        <div class="step">+</div>
+        <div>
+          <h2 id="addonsh">Optional Add-Ons for Industry Fit</h2>
+          <p class="goal">Tailor measurement and tactics to how you make money.</p>
+        </div>
+      </div>
+
+      <table class="table" role="table" aria-label="Industry Addons">
+        <thead>
+          <tr>
+            <th style="width:18%">Client Type</th>
+            <th>Revenue Integration Focus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>E-commerce</strong></td>
+            <td>ROI by product/category, product schema for richer SERP, feed hygiene; track AOV, margin, refund rate, assisted conversions.</td>
+          </tr>
+          <tr>
+            <td><strong>SaaS</strong></td>
+            <td>Organic → trial/demo → paid; attribute ARR/MRR, pipeline stage rates, sales-assisted influence; track PQLs and LTV by channel.</td>
+          </tr>
+          <tr>
+            <td><strong>Local Business</strong></td>
+            <td>GBP optimization, local pack coverage, review velocity; call tracking and store visit attribution; service-area content hubs.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div>© Your Company — Universal SEO Workflow</div>
+  <a href="#s25" class="cta" aria-label="Jump to Revenue Mapping">View Revenue Forecast →</a>
+</footer>
+
+<script>
+/* Scroll progress bar */
+const progress = document.getElementById('progress');
+const onScroll = () => {
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  progress.style.width = scrolled + '%';
+};
+document.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+/* Scroll-spy for TOC */
+const links = Array.from(document.querySelectorAll('.toc a'));
+const ids = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+const spy = () => {
+  const fromTop = window.scrollY + 120;
+  let current = null;
+  for (const sec of ids){
+    const top = sec.offsetTop;
+    const bottom = top + sec.offsetHeight;
+    if (fromTop >= top && fromTop < bottom){ current = sec; break; }
+  }
+  links.forEach(a => a.classList.toggle('active', current && a.getAttribute('href') === '#' + current.id));
+};
+document.addEventListener('scroll', spy, {passive:true});
+window.addEventListener('resize', spy);
+spy();
+
+/* Smooth internal link behavior for older browsers */
+links.forEach(a=>{
+  a.addEventListener('click', e=>{
+    const href = a.getAttribute('href');
+    if(href && href.startsWith('#')){
+      e.preventDefault();
+      document.querySelector(href)?.scrollIntoView({behavior:'smooth', block:'start'});
+      history.replaceState(null, '', href);
+    }
+  });
+});
+</script>
 </body>
 </html>
+```
 
+Want me to add your **logo, colors, and contact CTA** so it matches your brand — or export this as a **shareable PDF**?
