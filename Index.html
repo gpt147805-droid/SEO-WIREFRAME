@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Universal SEO Workflow — Revenue Integration (Wireframe)</title>
+  <style>
+    :root{
+      --bg:#f6f6f6;
+      --ink:#0f0f0f;
+      --muted:#6b7280;
+      --stroke:#e5e7eb;
+      --white:#ffffff;
+      --blue:#3b82f6;
+      --green:#22c55e;
+      --orange:#f59e0b;
+      --amber:#fbbf24;
+      --radius:16px;
+      --container:1200px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";color:var(--ink);background:var(--bg);line-height:1.5}
+    .container{max-width:var(--container);margin:0 auto;padding:0 16px}
+    .shadow{box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06)}
+    .card{background:var(--white);border:1px solid var(--stroke);border-radius:var(--radius);padding:20px}
+    .chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#111}
+    .chip-dot{display:inline-block;width:10px;height:10px;border-radius:9999px}
+    header{position:sticky;top:0;background:rgba(255,255,255,.8);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--stroke);z-index:50}
+    header .brand{display:flex;align-items:center;gap:12px}
+    header .logo{width:36px;height:36px;border-radius:12px;background:var(--amber)}
+    h1{font-size:20px;margin:0}
+    p.sub{margin:2px 0 0;color:var(--muted);font-size:13px}
+    section{margin:28px 0}
+    h2{font-size:18px;margin:0 0 10px}
+    h3{font-size:16px;margin:0}
+    .grid{display:grid;gap:16px}
+    @media(min-width:768px){.grid-3{grid-template-columns:2fr 1fr 1fr}}
+    @media(min-width:1024px){.grid-3{grid-template-columns:2fr 1fr 1fr}}
+    .legend{display:none}
+    @media(min-width:640px){.legend{display:flex;align-items:center;gap:12px;font-size:12px}}
+    .pill{height:12px;border-radius:6px}
+    .mute{color:var(--muted)}
+    /* Timeline */
+    .timeline{position:relative}
+    .timeline-track{position:absolute;left:0;right:0;top:28px;height:4px;background:#e9ecef;border-radius:9999px}
+    .timeline-grid{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
+    @media(min-width:640px){.timeline-grid{grid-template-columns:repeat(3,1fr)}}
+    @media(min-width:1024px){.timeline-grid{grid-template-columns:repeat(9,1fr)}}
+    .step{position:relative;text-align:center}
+    .dot{width:40px;height:40px;border-radius:9999px;color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto;border:4px solid #fff;box-shadow:0 6px 16px rgba(0,0,0,.1);font-weight:600}
+    .label{margin-top:8px;font-size:12px}
+    /* Placeholders (wireframe effect) */
+    .ph{background:#efefef;border-radius:8px}
+    .ph.small{height:12px;width:110px;margin:6px auto 0}
+    .ph.box{height:64px}
+    /* Utilities */
+    .row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .row-wrap{display:flex;flex-wrap:wrap;gap:10px}
+    .gap-6{gap:16px}
+    .btn{padding:10px 14px;border-radius:12px;border:1px solid var(--stroke);background:#fff;font-size:14px;cursor:pointer}
+    .btn.dark{background:#111;color:#fff;border-color:#111}
+    .callout{border:1px dashed #f2c94c;background:#fff7e6}
+    .list{padding-left:18px;margin:8px 0 0}
+    .list li{margin:4px 0}
+    .badge{display:inline-block;padding:2px 8px;border-radius:9999px;font-size:12px}
+    .b-blue{background:#eaf2ff;color:#1e40af}
+    .b-green{background:#eaf8ee;color:#065f46}
+    .b-orange{background:#fff3e6;color:#8a4b02}
+    .icon-swatch{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .sw{padding:10px;border:1px solid var(--stroke);border-radius:12px}
+    .sw .pill{width:70px}
+    .center{display:flex;align-items:center;justify-content:center;text-align:center}
+    .ring{position:relative;width:220px;height:220px;border:6px solid var(--amber);border-radius:9999px;margin:0 auto}
+    .ring:after{content:"";position:absolute;inset:18px;border:1px solid #fde68a;border-radius:9999px}
+    .mt-6{margin-top:16px}
+    .mb-2{margin-bottom:8px}
+    .mb-4{margin-bottom:16px}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container" style="padding:12px 16px;display:flex;align-items:center;justify-content:space-between;">
+      <div class="brand">
+        <div class="logo"></div>
+        <div>
+          <h1>Universal SEO Workflow</h1>
+          <p class="sub">SEO → Traffic → Conversions → Revenue Growth</p>
+        </div>
+      </div>
+      <div class="legend">
+        <span class="chip"><span class="chip-dot" style="background:var(--blue)"></span>Strategy</span>
+        <span class="chip"><span class="chip-dot" style="background:var(--green)"></span>Optimization</span>
+        <span class="chip"><span class="chip-dot" style="background:var(--orange)"></span>Revenue & Reporting</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="container">
+    <div class="grid grid-3">
+      <div class="card shadow">
+        <h2>Overview</h2>
+        <p class="mute">Wireframe demonstrating the flow from discovery to optimization with revenue mapping.</p>
+        <div class="icon-swatch mt-6">
+          <div class="sw"><div class="pill" style="background:#bfdbfe"></div><p class="mute" style="font-size:12px;margin:8px 0 0;">Strategy Block</p></div>
+          <div class="sw"><div class="pill" style="background:#bbf7d0"></div><p class="mute" style="font-size:12px;margin:8px 0 0;">Optimization Block</p></div>
+          <div class="sw"><div class="pill" style="background:#fed7aa"></div><p class="mute" style="font-size:12px;margin:8px 0 0;">Revenue Block</p></div>
+          <div class="sw"><div class="pill" style="background:#fde68a"></div><p class="mute" style="font-size:12px;margin:8px 0 0;">Loop Connector</p></div>
+        </div>
+      </div>
+
+      <div class="card shadow callout">
+        <h3>Golden Loop</h3>
+        <div class="ring center mt-6">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0 20px;font-size:14px;">
+            SEO Efforts → Measurable ROI → Sustainable Growth
+          </div>
+        </div>
+        <p class="mute" style="font-size:12px;margin-top:10px;">Centerpiece to connect actions to money.</p>
+      </div>
+
+      <div class="card shadow">
+        <h3>Legend</h3>
+        <div class="row-wrap mt-6">
+          <span class="badge b-blue">Discovery / Strategy</span>
+          <span class="badge b-green">Execution</span>
+          <span class="badge b-orange">Revenue & Reporting</span>
+        </div>
+        <div class="ph box mt-6"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="container">
+    <h2 class="mb-2">End-to-End Timeline</h2>
+    <div class="timeline card shadow">
+      <div class="timeline-track"></div>
+      <div class="timeline-grid">
+        <div class="step">
+          <div class="dot" style="background:var(--blue)">1</div>
+          <div class="label"><div class="ph small"></div>Discovery & Audit</div>
+        </div>
+        <div class="step">
+          <div class="dot" style="background:var(--blue)">2</div>
+          <div class="label"><div class="ph small"></div>Strategy & Roadmap</div>
+        </div>
+        <div class="step">
+          <div class="dot" style="background:var(--orange)">2.5</div>
+          <div class="label"><div class="ph small"></div>Revenue Mapping</div>
+        </div>
+        <div class="step">
+          <div class="dot" style="background:var(--green)">3</div>
+          <div class="label"><div class="ph small"></div>On-Page</div>
+        </div>
+        <div class="step">
+          <div class="dot" style="background:var(--green)">4</div>
+          <div class="label"><div class="ph small"></div>Content</div>
+        </div>
+        <div class="step">
+          <div class="dot" style="background:var(--green)">5</div>
+          <div class="label"><div class="ph small"></div>Technical</div>
+        </div>
+        <div class="step">
+          <div class="dot" style="background:var(--green)">6</div>
+          <div class="label"><div class="ph small"></div>Off-Page</div>
+        </div>
+        <div class="step">
+          <div class="dot" style="background:var(--orange)">7</div>
+          <div class="label"><div class="ph small"></div>Analytics</div>
+        </div>
+        <div class="step">
+          <div class="dot" style="background:var(--green)">8</div>
+          <div class="label"><div class="ph small"></div>Continuous Opt.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sections Grid -->
+  <section class="container">
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr));">
+      <!-- 1 -->
+      <div class="card shadow">
+        <div class="row mb-2">
+          <div class="chip"><span class="chip-dot" style="background:var(--blue)"></span><strong>1. Discovery & Audit</strong></div>
+        </div>
+        <ul class="list">
+          <li>Tech, content & backlink audit</li>
+          <li>Competitor traffic & revenue benchmarks</li>
+          <li>Keyword gap & intent mapping</li>
+        </ul>
+        <div class="row mt-6">
+          <span class="mute" style="font-size:12px">Output: SEO Health Report</span>
+          <span class="badge b-green">Find revenue leaks</span>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="card shadow">
+        <div class="row mb-2">
+          <div class="chip"><span class="chip-dot" style="background:var(--blue)"></span><strong>2. Strategy & Roadmap</strong></div>
+        </div>
+        <ul class="list">
+          <li>Keyword clusters by intent</li>
+          <li>Audience segmentation</li>
+          <li>3–6–12 month plan</li>
+        </ul>
+        <div class="ph box mt-6"></div>
+        <div class="row mt-6">
+          <span class="mute" style="font-size:12px">Output: SEO Blueprint</span>
+          <span class="mute" style="font-size:12px">Milestones</span>
+        </div>
+      </div>
+
+      <!-- 2.5 -->
+      <div class="card shadow">
+        <div class="row mb-2">
+          <div class="chip"><span class="chip-dot" style="background:var(--orange)"></span><strong>2.5 Revenue Mapping ⭐</strong></div>
+        </div>
+        <ul class="list">
+          <li>Identify money pages & keywords</li>
+          <li>Estimate traffic → leads → revenue</li>
+          <li>ROI model: Traffic × CTR × CR × AOV</li>
+          <li>Define ROI%, CPA, revenue targets</li>
+        </ul>
+        <div class="card" style="border-color:#fed7aa;background:#fff7ed;margin-top:12px">Output: Forecast Dashboard</div>
+      </div>
+
+      <!-- 3 -->
+      <div class="card shadow">
+        <div class="row mb-2">
+          <div class="chip"><span class="chip-dot" style="background:var(--green)"></span><strong>3. On-Page Optimization</strong></div>
+        </div>
+        <ul class="list">
+          <li>Meta, headings, copy</li>
+          <li>Internal linking & IA</li>
+          <li>Mobile, schema, speed</li>
+        </ul>
+        <div class="row mt-6"><span class="badge b-green">Better UX → higher CVR</span></div>
+      </div>
+
+      <!-- 4 -->
+      <div class="card shadow">
+        <div class="row mb-2">
+          <div class="chip"><span class="chip-dot" style="background:var(--green)"></span><strong>4. Content Creation</strong></div>
+        </div>
+        <ul class="list">
+          <li>Blogs & landing pages</li>
+          <li>Update outdated pages</li>
+          <li>CTAs, visuals, internal links</li>
+        </ul>
+        <div class="row mt-6">
+          <span class="mute" style="font-size:12px">Output: Content Calendar</span>
+          <span class="mute" style="font-size:12px">Published assets</span>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="card shadow">
+        <div class="row mb-2">
+          <div class="chip"><span class="chip-dot" style="background:var(--green)"></span><strong>5. Technical SEO</strong></div>
+        </div>
+        <ul class="list">
+          <li>Fix crawl errors & duplicates</li>
+          <li>Improve Core Web Vitals</li>
+          <li>Sitemaps & indexing</li>
+        </ul>
+        <div class="row mt-6"><span class="mute" style="font-size:12px">Output: Technical Health Report</span></div>
+      </div>
+
+      <!-- 6 -->
+      <div class="card shadow">
+        <div class="row mb-2">
+          <div class="chip"><span class="chip-dot" style="background:var(--green)"></span><strong>6. Off-Page & Links</strong></div>
+        </div>
+        <ul class="list">
+          <li>High-quality backlinks & PR</li>
+          <li>Local citations & directories</li>
+          <li>Brand mentions & digital PR</li>
+        </ul>
+        <div class="row mt-6"><span class="mute" style="font-size:12px">Output: Authority Growth Report</span></div>
+      </div>
+
+      <!-- 7 -->
+      <div class="card shadow">
+        <div class="row mb-2">
+          <div class="chip"><span class="chip-dot" style="background:var(--orange)"></span><strong>7. Analytics & Reporting</strong></div>
+        </div>
+        <ul class="list">
+          <li>GA4 & Search Console integration</li>
+          <li>Keyword, traffic, conversion analysis</li>
+          <li>Organic revenue attribution</li>
+        </ul>
+        <div class="card" style="border-color:#fed7aa;background:#fff7ed;margin-top:12px">Output: Monthly Performance Dashboard</div>
+      </div>
+
+      <!-- 8 -->
+      <div class="card shadow">
+        <div class="row mb-2">
+          <div class="chip"><span class="chip-dot" style="background:var(--green)"></span><strong>8. Continuous Optimization</strong></div>
+        </div>
+        <ul class="list">
+          <li>Quarterly refreshes</li>
+          <li>A/B test titles, CTAs, layouts</li>
+          <li>Monitor competitors & gaps</li>
+        </ul>
+        <div class="row mt-6"><span class="mute" style="font-size:12px">Output: Optimization Log + Next-Phase Plan</span></div>
+      </div>
+
+      <!-- 9 Growth Loop -->
+      <div class="card shadow" style="grid-column:1/-1">
+        <div class="row mb-2">
+          <div class="chip"><span class="chip-dot" style="background:var(--orange)"></span><strong>9. SEO → Revenue Growth Loop</strong></div>
+        </div>
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px">
+          <div class="card callout">
+            <div class="pill" style="background:var(--amber);width:120px"></div>
+            <p class="mt-6">Quarterly ROI summary, compounding growth, reinvestment plan.</p>
+          </div>
+          <div class="card">
+            <div class="ph small"></div>
+            <p class="mt-6">Flow: SEO Action → Traffic Growth → Conversion Optimization → Revenue Growth → Reinvestment → More Growth.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Optional Add-ons -->
+  <section class="container">
+    <div class="card shadow">
+      <div class="row mb-4">
+        <h3>Optional Add-ons by Industry</h3>
+      </div>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
+        <div class="card">
+          <div class="ph small"></div>
+          <ul class="list">
+            <li>ROI by product/category</li>
+            <li>Product schema</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="ph small"></div>
+          <ul class="list">
+            <li>Organic → Demo → Paid tracking</li>
+            <li>Trial-to-paid ratio</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="ph small"></div>
+          <ul class="list">
+            <li>GMB + call tracking</li>
+            <li>In-store visits</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background:#fff;border-top:1px solid var(--stroke);">
+    <div class="container" style="padding:16px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+      <p class="mute" style="margin:0;font-size:13px">This is a <strong>wireframe</strong> — colors and blocks indicate zones only. Swap with brand UI later.</p>
+      <div class="row">
+        <button class="btn dark">Export as Slide</button>
+        <button class="btn">Open in Figma</button>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
