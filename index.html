@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stilo Supply – Long Beach Dispensary</title>
+  <title>Stilo Supply – Long Beach Weed Dispensary &amp; Delivery</title>
   <!-- Meta description for SEO -->
-  <meta name="description" content="Discover Stilo Supply’s Bixby Knolls dispensary in Long Beach. Explore our curated cannabis selection, shop in store or order same‑day delivery, and enjoy first‑time deals, weekly specials and a community vibe." />
+  <meta name="description" content="Stilo Supply is the premier Long Beach weed dispensary and delivery service. Visit our Bixby Knolls store for fresh cannabis flower, vapes, pre‑rolls, concentrates, edibles and wellness products, or order online for same‑day weed delivery to Long Beach and nearby neighbourhoods. Enjoy first‑time deals, weekly specials and a community vibe." />
   <!-- Schema.org structured data for a local business -->
   <script type="application/ld+json">
   {
@@ -27,24 +27,9 @@
     "telephone": "+1-562-676-4014",
     "email": "info@stilo.supply",
     "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
-        "opens": "09:00",
-        "closes": "21:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Friday", "Saturday"],
-        "opens": "09:00",
-        "closes": "22:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Sunday",
-        "opens": "09:00",
-        "closes": "21:00"
-      }
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "09:00", "closes": "21:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "09:00", "closes": "22:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "09:00", "closes": "21:00" }
     ],
     "priceRange": "$$",
     "sameAs": "https://stilo.supply"
@@ -64,402 +49,85 @@
       --text-light: #FFFFFF;
     }
     * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      color: var(--text-dark);
-      background-color: var(--light);
-      line-height: 1.6;
-    }
+    body { margin: 0; font-family: 'Montserrat', sans-serif; color: var(--text-dark); background-color: var(--light); line-height: 1.6; }
     h1, h2, h3 { margin: 0 0 0.5rem 0; }
-    h1 { font-size: 2.5rem; }
-    h2 { font-size: 1.8rem; }
-    h3 { font-size: 1.2rem; }
     /* Header styling */
-    .site-header {
-      background: var(--light);
-      border-bottom: 1px solid var(--accent);
-    }
-    .site-header .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.75rem 1rem;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .nav-left,
-    .nav-center,
-    .nav-right {
-      display: flex;
-      align-items: center;
-    }
-    .nav-left .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--primary);
-      text-decoration: none;
-    }
-    .nav-left .logo span {
-      font-size: 1.5rem;
-    }
-    .menu-button,
-    .search-button,
-    .cart-button,
-    .help-button {
-      background: none;
-      border: none;
-      padding: 0.4rem;
-      cursor: pointer;
-      color: var(--text-dark);
-    }
-    .menu-button i,
-    .search-button i,
-    .cart-button i,
-    .help-button i,
-    .account-link i {
-      font-size: 1.2rem;
-    }
-    .nav-center {
-      flex: 1 1 auto;
-      justify-content: center;
-      gap: 0.5rem;
-      color: var(--text-dark);
-      font-size: 0.9rem;
-      flex-wrap: wrap;
-    }
-    .nav-center .address-text {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 320px;
-    }
-    .nav-right {
-      gap: 0.75rem;
-    }
-    .help-button {
-      background: var(--primary);
-      color: var(--text-light);
-      border-radius: 6px;
-      padding: 0.4rem 0.75rem;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-    .help-button:hover { background: var(--secondary); }
-    /* Responsive header adjustments */
-    @media (max-width: 768px) {
-      .nav-center {
-        display: none;
-      }
-    }
+    .site-header { background: var(--light); border-bottom: 1px solid var(--accent); }
+    .nav-container { max-width: 1200px; margin: 0 auto; display:flex; align-items:center; justify-content:space-between; padding:0.75rem 1rem; flex-wrap:wrap; gap:0.5rem; }
+    .nav-left,.nav-center,.nav-right { display:flex; align-items:center; }
+    .nav-left .logo { font-size:1.5rem; font-weight:700; color:var(--primary); text-decoration:none; }
+    .menu-button,.search-button,.cart-button,.help-button { background:none; border:none; padding:0.4rem; cursor:pointer; color:var(--text-dark); }
+    .menu-button i,.search-button i,.cart-button i,.help-button i,.account-link i{ font-size:1.2rem; }
+    .nav-center { flex:1 1 auto; justify-content:center; gap:0.5rem; color:var(--text-dark); font-size:0.9rem; flex-wrap:wrap; }
+    .nav-center .address-text { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:320px; }
+    .nav-right { gap:0.75rem; }
+    .help-button { background:var(--primary); color:var(--text-light); border-radius:6px; padding:0.4rem 0.75rem; font-size:0.9rem; display:flex; align-items:center; gap:0.3rem; }
+    .help-button:hover { background:var(--secondary); }
+    @media(max-width:768px){ .nav-center{ display:none; } }
     /* Hero section */
-    .hero {
-      background-image: url('ca1d9581-e1b0-4350-8f6b-8ddf6da1227b.png');
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      color: var(--text-light);
-      min-height: 50vh;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(43, 74, 47, 0.5);
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 4rem 2rem;
-      max-width: 700px;
-    }
-    .hero h1 { font-size: 3rem; font-weight: 600; color: var(--text-light); }
-    .hero h2 { font-size: 2rem; font-style: italic; color: var(--accent); margin-top: 0.5rem; }
-    .hero p { font-size: 1rem; color: #f5f5f5; margin-top: 1rem; }
+    .hero { background-image:url('ca1d9581-e1b0-4350-8f6b-8ddf6da1227b.png'); background-size:cover; background-position:center; position:relative; color:var(--text-light); min-height:50vh; }
+    .hero::after { content:''; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(43,74,47,0.5); }
+    .hero-content { position:relative; z-index:2; padding:4rem 2rem; max-width:700px; }
+    .hero h1 { font-size:3rem; font-weight:600; color:var(--text-light); }
+    .hero h2 { font-size:2rem; font-style:italic; color:var(--accent); margin-top:0.5rem; }
+    .hero p { font-size:1rem; color:#f5f5f5; margin-top:1rem; }
+    .cta-primary,.cta-secondary { display:inline-block; padding:0.6rem 1.2rem; border-radius:6px; font-size:0.9rem; font-weight:600; text-decoration:none; margin-top:1rem; }
+    .cta-primary { background:var(--primary); color:var(--text-light); }
+    .cta-secondary { background:var(--secondary); color:var(--text-light); }
+    .cta-primary:hover { background:#007a3d; } .cta-secondary:hover { background:#1e3624; }
     /* Generic container */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
-    }
-    section { padding: 2rem 0; }
+    .container { max-width:1200px; margin:0 auto; padding:2rem 1rem; }
+    section { padding:2rem 0; }
     /* Story section */
-    .story .content {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-    }
-    .story .text {
-      flex: 1 1 60%;
-      padding-right: 1rem;
-    }
-    .story .info {
-      flex: 1 1 35%;
-      background: var(--primary);
-      border-radius: 8px;
-      padding: 1rem;
-      color: var(--text-light);
-    }
-    .story .info .info-item {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 1rem;
-    }
-    .story .info .info-item i {
-      font-size: 1.5rem;
-      margin-right: 0.5rem;
-      color: var(--accent);
-    }
-    .story .info .info-item span {
-      font-size: 0.8rem;
-      line-height: 1.3;
-    }
-    /* Gallery section */
-    .gallery .gallery-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .gallery .photo {
-      flex: 1 1 calc(50% - 1rem);
-      position: relative;
-    }
-    .gallery .photo img {
-      width: 100%;
-      display: block;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
+    .story .content { display:flex; flex-wrap:wrap; gap:2rem; }
+    .story .text { flex:1 1 60%; padding-right:1rem; }
+    .story .info { flex:1 1 35%; background:var(--primary); border-radius:8px; padding:1rem; color:var(--text-light); }
+    .info-item { display:flex; align-items:flex-start; margin-bottom:1rem; }
+    .info-item i { font-size:1.5rem; margin-right:0.5rem; color:var(--accent); }
+    .info-item span { font-size:0.8rem; line-height:1.3; }
+    /* Gallery */
+    .gallery .gallery-grid { display:flex; flex-wrap:wrap; gap:1rem; }
+    .gallery .photo { flex:1 1 calc(50% - 1rem); position:relative; }
+    .gallery .photo img { width:100%; display:block; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
     /* Location section */
-    .location .content {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-    }
-    .location .directions {
-      flex: 1 1 50%;
-    }
-    .location .directions ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .location .directions li {
-      margin-bottom: 0.5rem;
-      position: relative;
-      padding-left: 1rem;
-    }
-    .location .directions li::before {
-      content: '\2022';
-      position: absolute;
-      left: 0;
-      color: var(--primary);
-    }
-    .location .map {
-      flex: 1 1 50%;
-    }
-    .location .map iframe {
-      width: 100%;
-      height: 350px;
-      border: 0;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    /* Products section */
-    .products .grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .products .card {
-      flex: 1 1 calc(33.333% - 1rem);
-      background: var(--light);
-      border: 1px solid var(--accent);
-      border-radius: 8px;
-      padding: 1rem;
-      text-align: center;
-    }
-    .products .card i {
-      font-size: 2rem;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-    .products .callout {
-      margin-top: 1rem;
-      background: var(--accent);
-      padding: 1rem;
-      border-radius: 8px;
-      font-size: 0.9rem;
-    }
-    .products .callout strong {
-      font-weight: 600;
-    }
-    /* Deals section */
-    .deals .grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .deals .card {
-      flex: 1 1 calc(33.333% - 1rem);
-      background: var(--light);
-      border: 1px solid var(--primary);
-      border-radius: 8px;
-      padding: 1rem;
-      text-align: center;
-    }
-    .deals .card i {
-      font-size: 2rem;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-    /* Testimonials section */
-    .testimonials .content {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-    }
-    .testimonials .left {
-      flex: 1 1 50%;
-    }
-    .testimonials blockquote {
-      background: var(--accent);
-      border-radius: 8px;
-      padding: 1rem 1.5rem;
-      margin: 0 0 1rem 0;
-      position: relative;
-      font-style: italic;
-      color: var(--text-dark);
-    }
-    .testimonials blockquote i {
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      font-size: 2rem;
-      color: var(--primary);
-    }
-    .testimonials .right {
-      flex: 1 1 50%;
-    }
-    /* FAQ accordion styling */
-    .testimonials details {
-      margin-bottom: 0.8rem;
-    }
-    .testimonials summary {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--primary);
-      cursor: pointer;
-    }
-    .testimonials summary::-webkit-details-marker {
-      display: none;
-    }
-    .testimonials details p {
-      font-size: 0.85rem;
-      margin-top: 0.3rem;
-    }
-    /* Footer styling */
-    .site-footer {
-      background: var(--secondary);
-      color: var(--text-light);
-    }
-    .site-footer .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 3rem 1rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-    }
-    .site-footer .footer-column {
-      flex: 1 1 250px;
-    }
-    .site-footer h3 {
-      font-size: 1rem;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-      color: var(--accent);
-    }
-    .site-footer p {
-      font-size: 0.85rem;
-      margin: 0 0 1rem 0;
-      color: var(--text-light);
-    }
-    .site-footer ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .site-footer li {
-      margin-bottom: 0.5rem;
-    }
-    .site-footer a {
-      color: var(--text-light);
-      text-decoration: none;
-      font-size: 0.9rem;
-    }
-    .site-footer a:hover {
-      color: var(--accent);
-    }
-    .site-footer .social-icons {
-      display: flex;
-      gap: 0.5rem;
-    }
-    .site-footer .social-icons a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 2rem;
-      height: 2rem;
-      border-radius: 50%;
-      background: var(--text-light);
-      color: var(--secondary);
-      text-decoration: none;
-      font-size: 0.9rem;
-    }
-    .site-footer .social-icons a:hover {
-      background: var(--accent);
-      color: var(--secondary);
-    }
+    .location .content{ display:flex; flex-wrap:wrap; gap:2rem; }
+    .location .directions{ flex:1 1 50%; }
+    .location .directions ul{ list-style:none; padding:0; margin:0; }
+    .location .directions li{ margin-bottom:0.5rem; position:relative; padding-left:1rem; }
+    .location .directions li::before{ content:'\\2022'; position:absolute; left:0; color:var(--primary); }
+    .location .map{ flex:1 1 50%; }
+    .location .map iframe{ width:100%; height:350px; border:0; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+    /* Products & deals */
+    .products .grid,.deals .grid{ display:flex; flex-wrap:wrap; gap:1rem; }
+    .products .card,.deals .card{ flex:1 1 calc(33.333% - 1rem); background:var(--light); border:1px solid var(--accent); border-radius:8px; padding:1rem; text-align:center; }
+    .products .card i,.deals .card i{ font-size:2rem; color:var(--primary); margin-bottom:0.5rem; }
+    .products .callout{ margin-top:1rem; background:var(--accent); padding:1rem; border-radius:8px; font-size:0.9rem; }
+    /* Testimonials & FAQ */
+    .testimonials .content{ display:flex; flex-wrap:wrap; gap:2rem; }
+    .testimonials .left{ flex:1 1 50%; }
+    .testimonials blockquote{ background:var(--accent); border-radius:8px; padding:1rem 1.5rem; margin:0 0 1rem 0; position:relative; font-style:italic; color:var(--text-dark); }
+    .testimonials blockquote i{ position:absolute; top:-10px; left:-10px; font-size:2rem; color:var(--primary); }
+    .testimonials .right{ flex:1 1 50%; }
+    .testimonials details{ margin-bottom:0.8rem; }
+    .testimonials summary{ font-size:0.95rem; font-weight:600; color:var(--primary); cursor:pointer; }
+    .testimonials summary::-webkit-details-marker{ display:none; }
+    .testimonials details p{ font-size:0.85rem; margin-top:0.3rem; }
+    /* Footer */
+    .site-footer{ background:var(--secondary); color:var(--text-light); }
+    .footer-container{ max-width:1200px; margin:0 auto; padding:3rem 1rem; display:flex; flex-wrap:wrap; gap:2rem; }
+    .footer-column{ flex:1 1 250px; }
+    .site-footer h3{ font-size:1rem; text-transform:uppercase; margin-bottom:1rem; color:var(--accent); }
+    .site-footer p{ font-size:0.85rem; margin:0 0 1rem 0; color:var(--text-light); }
+    .site-footer ul{ list-style:none; padding:0; margin:0; }
+    .site-footer li{ margin-bottom:0.5rem; }
+    .site-footer a{ color:var(--text-light); text-decoration:none; font-size:0.9rem; }
+    .site-footer a:hover{ color:var(--accent); }
+    .social-icons{ display:flex; gap:0.5rem; }
+    .social-icons a{ display:inline-flex; align-items:center; justify-content:center; width:2rem; height:2rem; border-radius:50%; background:var(--text-light); color:var(--secondary); text-decoration:none; font-size:0.9rem; }
+    .social-icons a:hover{ background:var(--accent); color:var(--secondary); }
     /* Responsive adjustments */
-    @media (max-width: 992px) {
-      .products .card,
-      .deals .card {
-        flex: 1 1 calc(50% - 1rem);
-      }
-    }
-    @media (max-width: 768px) {
-      .story .content,
-      .location .content,
-      .testimonials .content {
-        flex-direction: column;
-      }
-      .story .text,
-      .story .info,
-      .location .directions,
-      .location .map,
-      .testimonials .left,
-      .testimonials .right {
-        flex: 1 1 100%;
-      }
-      .products .card,
-      .deals .card {
-        flex: 1 1 100%;
-      }
-      .gallery .photo {
-        flex: 1 1 100%;
-      }
-      .site-footer .footer-container {
-        flex-direction: column;
-      }
-    }
+    @media(max-width:992px){ .products .card,.deals .card{ flex:1 1 calc(50% - 1rem); } }
+    @media(max-width:768px){ .story .content,.location .content,.testimonials .content{ flex-direction:column; } .story .text,.story .info,.location .directions,.location .map,.testimonials .left,.testimonials .right{ flex:1 1 100%; } .products .card,.deals .card{ flex:1 1 100%; } .gallery .photo{ flex:1 1 100%; } .footer-container{ flex-direction:column; } }
   </style>
 </head>
 <body>
@@ -488,15 +156,16 @@
   <section class="hero">
     <div class="hero-content">
       <h1>Stilo Supply</h1>
-      <h2>Long Beach Location</h2>
-      <p>Bringing better weed to the neighbourhood</p>
+      <h2>Long Beach Weed Dispensary &amp; Delivery</h2>
+      <p>Bringing better weed to Long&nbsp;Beach</p>
+      <p><a href="/shop" class="cta-primary">Order Long Beach Weed Delivery</a> &nbsp;or&nbsp; <a href="/about-us" class="cta-secondary">Visit Our Bixby Knolls Dispensary</a></p>
     </div>
   </section>
 
   <!-- Story & Mission -->
   <section class="story">
     <div class="container">
-      <h2>Local story &amp; mission</h2>
+      <h2>Our Long Beach weed dispensary story &amp; mission</h2>
       <div class="content">
         <div class="text">
           <p><strong>Stilo Supply opened its doors in the Bixby Knolls neighbourhood to give Long Beach better weed and a place to connect.</strong> Instead of feeling like another corporate chain, our shop has a familiar, community‑driven vibe. We partner directly with top cultivators—no middlemen or inflated markups—so you get fresh flower, clean concentrates and premium edibles at fair prices. We stock products we would use ourselves and welcome everyone from first‑timers to seasoned connoisseurs.</p>
@@ -513,15 +182,11 @@
   <!-- Gallery -->
   <section class="gallery">
     <div class="container">
-      <h2>Our place &amp; neighbourhood</h2>
+      <h2>Our place &amp; Long Beach neighbourhood</h2>
       <p>Get a feel for the Stilo vibe. Our cosy dispensary in Bixby Knolls welcomes you with friendly budtenders and curated products, while the Long Beach skyline reminds you that you’re still in the heart of the city.</p>
       <div class="gallery-grid">
-        <div class="photo">
-          <img src="dispensary_interior.jpg" alt="Inside Stilo Supply dispensary" />
-        </div>
-        <div class="photo">
-          <img src="long_beach_skyline.jpg" alt="Long Beach skyline at night" />
-        </div>
+        <div class="photo"><img src="dispensary_interior.jpg" alt="Inside Stilo Supply dispensary"></div>
+        <div class="photo"><img src="long_beach_skyline.jpg" alt="Long Beach skyline at night"></div>
       </div>
     </div>
   </section>
@@ -529,7 +194,7 @@
   <!-- Location & Directions -->
   <section class="location">
     <div class="container">
-      <h2>Location &amp; directions</h2>
+      <h2>Our weed dispensary location &amp; directions</h2>
       <div class="content">
         <div class="directions">
           <ul>
@@ -539,13 +204,8 @@
           </ul>
         </div>
         <div class="map">
-          <iframe
-            src="https://www.openstreetmap.org/export/embed.html?bbox=-118.1939%2C33.8179%2C-118.1853%2C33.8239&layer=mapnik&marker=33.8202%2C-118.1896"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-          <small><a href="https://www.openstreetmap.org/?mlat=33.8202&mlon=-118.1896#map=15/33.8202/-118.1896" target="_blank" style="color: var(--primary);">View larger map</a></small>
+          <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-118.1939%2C33.8179%2C-118.1853%2C33.8239&layer=mapnik&marker=33.8202%2C-118.1896" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <small><a href="https://www.openstreetmap.org/?mlat=33.8202&mlon=-118.1896#map=15/33.8202/-118.1896" target="_blank" style="color:var(--primary);">View larger map</a></small>
         </div>
       </div>
     </div>
@@ -554,7 +214,7 @@
   <!-- Products & Shopping -->
   <section class="products">
     <div class="container">
-      <h2>Products &amp; shopping</h2>
+      <h2>Cannabis products &amp; shopping</h2>
       <div class="grid">
         <div class="card"><i class="fa-solid fa-leaf"></i><h3>Flower</h3><p>Hand‑selected buds from local cultivators like Alien Labs and Allswell—never stale, always aromatic.</p></div>
         <div class="card"><i class="fa-solid fa-smoking"></i><h3>Pre‑rolls</h3><p>Convenient, ready‑to‑smoke joints and mini‑packs from trusted California brands.</p></div>
@@ -562,16 +222,14 @@
         <div class="card"><i class="fa-solid fa-cookie-bite"></i><h3>Edibles</h3><p>Delicious gummies, chocolates and baked treats in precise dosages for every tolerance.</p></div>
         <div class="card"><i class="fa-solid fa-hand-holding-heart"></i><h3>Wellness</h3><p>CBD and THCa tinctures, capsules and topicals to support relaxation and relief.</p></div>
       </div>
-      <div class="callout">
-        <p><strong>Shop how you like:</strong> Visit us in Bixby Knolls, order same‑day delivery across Long Beach or schedule curbside pickup—all with no markups or hidden fees.</p>
-      </div>
+      <div class="callout"><p><strong>Shop how you like:</strong> Visit us in Bixby Knolls, order same‑day delivery across Long Beach or schedule curbside pickup—all with no markups or hidden fees.</p></div>
     </div>
   </section>
 
   <!-- Deals & Rewards -->
   <section class="deals">
     <div class="container">
-      <h2>Deals &amp; rewards</h2>
+      <h2>Cannabis deals &amp; rewards</h2>
       <div class="grid">
         <div class="card"><i class="fa-solid fa-gift"></i><h3>First‑timers</h3><p>Spin the wheel for up to 30 % off; 25 % off your second visit and 20 % off the third.</p></div>
         <div class="card"><i class="fa-solid fa-star"></i><h3>Weekly specials</h3><p>New deals every Monday on flower, vapes, edibles &amp; more.</p></div>
@@ -590,26 +248,13 @@
           <blockquote><i class="fa-solid fa-quote-left"></i> "Quality cannabis with fast and friendly delivery."<br><small>— Miguel, Bixby Knolls</small></blockquote>
         </div>
         <div class="right">
-          <details>
-            <summary>Do you deliver?</summary>
-            <p>Yes—place an order online to get cannabis delivered the same day throughout Long Beach and surrounding areas.</p>
-          </details>
-          <details>
-            <summary>Are out‑of‑state visitors welcome?</summary>
-            <p>Absolutely! Bring a valid government‑issued ID proving you’re 21 or older, or a doctor’s recommendation if you’re a medical patient under 21.</p>
-          </details>
-          <details>
-            <summary>What payment methods are accepted?</summary>
-            <p>We accept cash, debit and credit cards; there’s also an ATM on site for your convenience.</p>
-          </details>
-          <details>
-            <summary>What are the first‑time customer deals?</summary>
-            <p>Spin our prize wheel for up to 30 % off your first visit, get 25 % off your second visit and 20 % off your third.</p>
-          </details>
-          <details>
-            <summary>How does the rewards programme work?</summary>
-            <p>You’ll earn 1 point per dollar spent. Redeem points for birthday deals, referral bonuses and rotating perks—plus, check back each Monday for fresh weekly specials.</p>
-          </details>
+          <details><summary>Do you deliver?</summary><p>Yes—place an order online to get cannabis delivered the same day throughout Long Beach and surrounding areas.</p></details>
+          <details><summary>Are out‑of‑state visitors welcome?</summary><p>Absolutely! Bring a valid government‑issued ID proving you’re 21 or older, or a doctor’s recommendation if you’re a medical patient under 21.</p></details>
+          <details><summary>What payment methods are accepted?</summary><p>We accept cash, debit and credit cards; there’s also an ATM on site for your convenience.</p></details>
+          <details><summary>What are the first‑time customer deals?</summary><p>Spin our prize wheel for up to 30 % off your first visit, get 25 % off your second visit and 20 % off your third.</p></details>
+          <details><summary>How does the rewards programme work?</summary><p>You’ll earn 1 point per dollar spent. Redeem points for birthday deals, referral bonuses and rotating perks—plus, check back each Monday for fresh weekly specials.</p></details>
+          <details><summary>How far is Stilo Supply from Cal State Long Beach?</summary><p>We’re only about ten minutes away via the 405 freeway. Take the Long Beach Blvd exit and you’ll find us in the Bixby Knolls neighbourhood.</p></details>
+          <details><summary>Do you deliver to Signal Hill?</summary><p>Yes! We offer same‑day weed delivery to Signal Hill and most of Long Beach. Simply place your order online and we’ll bring it right to your door.</p></details>
         </div>
       </div>
     </div>
