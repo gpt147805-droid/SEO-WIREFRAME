@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stilo Supply – Long Beach Weed Dispensary &amp; Weed Delivery</title>
   <meta name="description" content="Stilo Supply is the premier Long Beach weed dispensary and weed delivery service. Visit our Bixby Knolls store for fresh cannabis flower, vapes, pre‑rolls, concentrates, edibles and wellness products, or order online for same‑day weed delivery to Long Beach and nearby neighbourhoods. Enjoy first‑time weed deals, weekly weed specials and a community vibe." />
-  <!-- Keyword-rich meta tags for local SEO -->
   <meta name="keywords" content="Long Beach weed dispensary, weed delivery Long Beach, cannabis store Bixby Knolls, Long Beach cannabis shop, Stilo Supply weed, Stilo Supply Long Beach dispensary, Long Beach weed store, cannabis delivery Long Beach" />
   <!-- Schema.org structured data for local business -->
   <script type="application/ld+json">
@@ -13,10 +12,6 @@
     "@context": "https://schema.org",
     "@type": "CannabisStore",
     "name": "Stilo Supply",
-    "image": [
-      "dispensary_interior.jpg",
-      "long_beach_skyline.jpg"
-    ],
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "3428 Long Beach Blvd",
@@ -85,7 +80,6 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
-    .header-left { display: flex; align-items: center; gap: 1rem; }
     .header-left .logo {
       font-size: 1.6rem;
       font-weight: 700;
@@ -127,21 +121,11 @@
     /* Hero */
     .hero {
       position: relative;
-      background-image: url('ca1d9581-e1b0-4350-8f6b-8ddf6da1227b.png');
-      background-size: cover;
-      background-position: center;
+      background: linear-gradient(135deg, #144d2a 0%, #296b43 50%, #89b784 100%);
       min-height: 60vh;
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-    .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(18, 103, 66, 0.6);
     }
     .hero-content {
       position: relative;
@@ -149,8 +133,9 @@
       text-align: center;
       padding: 3rem 1rem;
     }
-    .hero-content h1 { font-size: 3rem; }
-    .hero-content h2 { font-size: 2rem; margin-top: 0.5rem; color: var(--accent); }
+    .hero-content i { font-size: 4rem; color: var(--accent); margin-bottom: 0.5rem; }
+    .hero-content h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+    .hero-content h2 { font-size: 2rem; margin-top: 0.25rem; color: var(--accent); }
     .hero-content .cta-group { margin-top: 1.5rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
     .hero-content .cta {
       background: var(--primary);
@@ -170,23 +155,18 @@
     /* Story section */
     .story .columns { display: flex; flex-wrap: wrap; gap: 2rem; }
     .story .text-column { flex: 1 1 60%; }
-    .story .info-column { flex: 1 1 35%; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 8px; box-shadow: var(--shadow); padding: 1.5rem; }
+    .story .info-column {
+      flex: 1 1 35%;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+    }
     .story .info-item { display: flex; gap: 0.7rem; margin-bottom: 1rem; align-items: flex-start; }
     .story .info-item i { font-size: 1.4rem; color: var(--primary); margin-top: 0.1rem; }
     .story .info-item span { font-size: 0.9rem; }
-    /* Gallery section */
-    .gallery .grid { display: flex; flex-wrap: wrap; gap: 1rem; }
-    .gallery .grid img { width: 100%; border-radius: 8px; box-shadow: var(--shadow); }
-    .gallery .grid > div { flex: 1 1 calc(50% - 1rem); }
-    /* Location section */
-    .location .columns { display: flex; flex-wrap: wrap; gap: 2rem; }
-    .location .directions { flex: 1 1 40%; }
-    .location .directions ul { list-style: none; padding: 0; margin: 0; }
-    .location .directions li { margin-bottom: 0.8rem; position: relative; padding-left: 1.2rem; }
-    .location .directions li::before { content: '\2022'; position: absolute; left: 0; color: var(--primary); }
-    .location .map { flex: 1 1 55%; }
-    .location .map iframe { width: 100%; height: 350px; border: none; border-radius: 8px; box-shadow: var(--shadow); }
-    /* Products & Deals sections */
+    /* Gallery section (converted to cards) */
     .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
     .card {
       background: var(--card-bg);
@@ -201,6 +181,15 @@
       color: var(--primary);
       margin-bottom: 0.6rem;
     }
+    /* Location section */
+    .location .columns { display: flex; flex-wrap: wrap; gap: 2rem; }
+    .location .directions { flex: 1 1 40%; }
+    .location .directions ul { list-style: none; padding: 0; margin: 0; }
+    .location .directions li { margin-bottom: 0.8rem; position: relative; padding-left: 1.2rem; }
+    .location .directions li::before { content: '\\2022'; position: absolute; left: 0; color: var(--primary); }
+    .location .map { flex: 1 1 55%; }
+    .location .map iframe { width: 100%; height: 350px; border: none; border-radius: 8px; box-shadow: var(--shadow); }
+    /* Callout */
     .callout {
       margin-top: 2rem;
       background: var(--accent);
@@ -210,10 +199,12 @@
       font-size: 0.95rem;
       color: var(--text-dark);
     }
-    /* Testimonials section */
-    .testimonials .columns { display: flex; flex-wrap: wrap; gap: 2rem; }
-    .testimonials .review-column { flex: 1 1 45%; }
-    .testimonials .faq-column { flex: 1 1 45%; }
+    /* Reviews & FAQ sections */
+    .reviews .review-wrapper,
+    .faqs .faq-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+    }
     blockquote {
       background: var(--card-bg);
       border-left: 4px solid var(--primary);
@@ -272,7 +263,6 @@
     @media (max-width: 768px) {
       .story .text-column, .story .info-column { flex: 1 1 100%; }
       .location .directions, .location .map { flex: 1 1 100%; }
-      .testimonials .review-column, .testimonials .faq-column { flex: 1 1 100%; }
     }
   </style>
 </head>
@@ -298,8 +288,8 @@
 
   <!-- Hero section -->
   <section class="hero">
-    <div class="hero-overlay"></div>
     <div class="hero-content">
+      <i class="fa-solid fa-cannabis"></i>
       <h1>Stilo Supply</h1>
       <h2>Long Beach Weed Dispensary &amp; Delivery</h2>
       <p>Bringing better weed to Long Beach</p>
@@ -332,14 +322,22 @@
     </div>
   </section>
 
-  <!-- Gallery section -->
+  <!-- Gallery / Store & neighbourhood -->
   <section class="gallery">
     <div class="container">
-      <div class="section-title"><h2>Our place &amp; neighbourhood</h2></div>
-      <p>Step inside our inviting store and see where our friendly budtenders help you pick the perfect product. Explore the Long Beach skyline and feel the unique vibe of Bixby Knolls.</p>
-      <div class="grid">
-        <div><img src="dispensary_interior.jpg" alt="Inside Stilo Supply weed dispensary"></div>
-        <div><img src="long_beach_skyline.jpg" alt="Long Beach skyline at night"></div>
+      <div class="section-title"><h2>Our weed shop &amp; neighbourhood vibe</h2></div>
+      <p>Get to know the feel of our Long Beach weed dispensary. Our friendly budtenders welcome you to an inviting space where community and cannabis meet, and our Bixby Knolls neighbourhood offers local charm.</p>
+      <div class="cards-grid">
+        <div class="card">
+          <i class="fa-solid fa-store"></i>
+          <h3>Inviting store</h3>
+          <p>Our cosy boutique dispensary features curated weed products, comfortable ambience and knowledgeable staff.</p>
+        </div>
+        <div class="card">
+          <i class="fa-solid fa-city"></i>
+          <h3>Neighbourhood charm</h3>
+          <p>Located in the heart of Bixby Knolls, enjoy free parking and the easygoing vibe of our Long Beach community.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -382,7 +380,7 @@
   <!-- Deals & Rewards -->
   <section class="deals">
     <div class="container">
-      <div class="section-title"><h2>Deals &amp; rewards</h2></div>
+      <div class="section-title"><h2>Weed deals &amp; rewards</h2></div>
       <div class="cards-grid">
         <div class="card"><i class="fa-solid fa-gift"></i><h3>First‑timers</h3><p>Spin the wheel for up to 30 % off; 25 % off your second visit and 20 % off the third.</p></div>
         <div class="card"><i class="fa-solid fa-star"></i><h3>Weekly specials</h3><p>New deals every Monday on flower, vapes, edibles and more.</p></div>
@@ -391,46 +389,51 @@
     </div>
   </section>
 
-  <!-- Testimonials & FAQs -->
-  <section class="testimonials">
+  <!-- Reviews -->
+  <section class="reviews">
     <div class="container">
-      <div class="section-title"><h2>Reviews &amp; FAQs</h2></div>
-      <div class="columns">
-        <div class="review-column">
-          <blockquote><i class="fa-solid fa-quote-left"></i> Great products, good pricing and always on time.<small>— Sarah, Long Beach</small></blockquote>
-          <blockquote><i class="fa-solid fa-quote-left"></i> Quality cannabis with fast and friendly delivery.<small>— Miguel, Bixby Knolls</small></blockquote>
-          <blockquote><i class="fa-solid fa-quote-left"></i> Best dispensary in Long Beach! Super friendly and knowledgeable staff.<small>— Jasmine, Signal Hill</small></blockquote>
-        </div>
-        <div class="faq-column">
-          <details class="faq-item">
-            <summary>Do you deliver?</summary>
-            <p>Yes—place an order online to get cannabis delivered the same day throughout Long Beach and surrounding areas.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Are out‑of‑state visitors welcome?</summary>
-            <p>Absolutely! Bring a valid government‑issued ID proving you’re 21 or older, or a doctor’s recommendation if you’re a medical patient under 21.</p>
-          </details>
-          <details class="faq-item">
-            <summary>What payment methods are accepted for weed purchases?</summary>
-            <p>We accept cash, debit and credit cards for weed purchases; there’s also an ATM on site for your convenience.</p>
-          </details>
-          <details class="faq-item">
-            <summary>What are the first‑time customer deals?</summary>
-            <p>Spin our prize wheel for up to 30 % off your first weed purchase, get 25 % off your second visit and 20 % off your third.</p>
-          </details>
-          <details class="faq-item">
-            <summary>How does the rewards programme work?</summary>
-            <p>You’ll earn 1 point per dollar spent on weed. Redeem points for birthday deals, referral bonuses and rotating perks—plus, check back each Monday for fresh weekly weed specials.</p>
-          </details>
-          <details class="faq-item">
-            <summary>How far is Stilo Supply from Cal State Long Beach?</summary>
-            <p>We’re only about ten minutes away via the 405 freeway. Take the Long Beach Blvd exit and you’ll find us in the Bixby Knolls neighbourhood.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Do you deliver to Signal Hill?</summary>
-            <p>Yes! We offer same‑day weed delivery to Signal Hill and most of Long Beach. Simply place your order online and we’ll bring it right to your door.</p>
-          </details>
-        </div>
+      <div class="section-title"><h2>Customer reviews</h2></div>
+      <div class="review-wrapper">
+        <blockquote><i class="fa-solid fa-quote-left"></i> Great products, good pricing and always on time.<small>— Sarah, Long Beach</small></blockquote>
+        <blockquote><i class="fa-solid fa-quote-left"></i> Quality cannabis with fast and friendly delivery.<small>— Miguel, Bixby Knolls</small></blockquote>
+        <blockquote><i class="fa-solid fa-quote-left"></i> Best dispensary in Long Beach! Super friendly and knowledgeable staff.<small>— Jasmine, Signal Hill</small></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section class="faqs">
+    <div class="container">
+      <div class="section-title"><h2>Frequently asked questions</h2></div>
+      <div class="faq-wrapper">
+        <details class="faq-item">
+          <summary>Do you deliver?</summary>
+          <p>Yes—place an order online to get cannabis delivered the same day throughout Long Beach and surrounding areas.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Are out‑of‑state visitors welcome?</summary>
+          <p>Absolutely! Bring a valid government‑issued ID proving you’re 21 or older, or a doctor’s recommendation if you’re a medical patient under 21.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What payment methods are accepted for weed purchases?</summary>
+          <p>We accept cash, debit and credit cards for weed purchases; there’s also an ATM on site for your convenience.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What are the first‑time customer deals?</summary>
+          <p>Spin our prize wheel for up to 30 % off your first weed purchase, get 25 % off your second visit and 20 % off your third.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How does the rewards programme work?</summary>
+          <p>You’ll earn 1 point per dollar spent on weed. Redeem points for birthday deals, referral bonuses and rotating perks—plus, check back each Monday for fresh weekly weed specials.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How far is Stilo Supply from Cal State Long Beach?</summary>
+          <p>We’re only about ten minutes away via the 405 freeway. Take the Long Beach Blvd exit and you’ll find us in the Bixby Knolls neighbourhood.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do you deliver to Signal Hill?</summary>
+          <p>Yes! We offer same‑day weed delivery to Signal Hill and most of Long Beach. Simply place your order online and we’ll bring it right to your door.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -480,6 +483,6 @@
       </div>
     </div>
   </footer>
-
 </body>
 </html>
+
