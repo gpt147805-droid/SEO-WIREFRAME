@@ -1,784 +1,314 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Universal SEO Workflow — Revenue-First Pitch</title>
-<meta name="description" content="A revenue-first, pitch-deck style SEO workflow with interactive ROI calculator, visual flow, and advanced UX." />
-
-<style>
-/* =========================================================
-   THEME TOKENS
-   ========================================================= */
-:root{
-  --bg:        #0b0f1a;
-  --bg-2:      #0e1326;
-  --panel:     #111936;
-  --panel-2:   #0b1330;
-  --edge:      #22306b;
-  --edge-2:    #29367b;
-  --ink:       #eaf0ff;
-  --muted:     #b7c3ee;
-  --brand:     #7da2ff;
-  --brand-2:   #5af0cf;
-  --accent:    #ffd96b;
-  --ok:        #9af2b2;
-  --bad:       #ff8aa8;
-  --shadow:    0 10px 30px rgba(0,0,0,.35);
-  --radius:    18px;
-  --r-sm:      12px;
-  --r-lg:      28px;
-  --maxw:      1200px;
-  --glass:     rgba(255,255,255,.06);
-  --glass-2:   rgba(255,255,255,.08);
-}
-
-:root[data-theme="light"]{
-  --bg:#f7f9ff; --bg-2:#eef3ff; --panel:#ffffff; --panel-2:#f5f8ff;
-  --edge:#dfe6ff; --edge-2:#cfd9ff; --ink:#0f1a3d; --muted:#4b5a8d;
-  --brand:#355dff; --brand-2:#00bfa6; --accent:#c47f00; --ok:#19824c; --bad:#c0204b;
-  --glass:rgba(0,0,0,.04); --glass-2:rgba(0,0,0,.06);
-  --shadow:0 6px 20px rgba(12,20,60,.12);
-}
-
-/* =========================================================
-   BASE
-   ========================================================= */
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto}
-}
-body{
-  margin:0; background: radial-gradient(1200px 500px at 80% -10%, rgba(124,155,255,.20), transparent 60%),
-                       radial-gradient(900px 420px at -10% 10%, rgba(90,240,207,.15), transparent 55%),
-                       linear-gradient(180deg,var(--bg),var(--bg-2));
-  color:var(--ink);
-  font:500 16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-}
-
-/* =========================================================
-   TOP BAR & THEME TOGGLE
-   ========================================================= */
-.topbar{
-  position:sticky; top:0; z-index:99; backdrop-filter:saturate(160%) blur(10px);
-  background:linear-gradient(180deg, var(--glass-2), transparent);
-  border-bottom:1px solid var(--edge); box-shadow: var(--shadow);
-}
-.topbar-inner{max-width:var(--maxw); margin:0 auto; padding:10px 20px; display:flex; gap:12px; align-items:center; justify-content:space-between}
-.logo{
-  display:flex; gap:10px; align-items:center; font-weight:800; letter-spacing:.2px;
-}
-.logo svg{width:24px; height:24px}
-.theme-toggle{
-  display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:999px; cursor:pointer;
-  border:1px solid var(--edge); background:var(--panel); color:var(--ink);
-}
-
-/* =========================================================
-   HEADER / HERO
-   ========================================================= */
-.header{
-  position:relative; isolation:isolate; padding:64px 20px 24px; overflow:hidden;
-}
-.header-inner{max-width:var(--maxw); margin:0 auto;}
-.kicker{display:inline-flex; gap:8px; align-items:center; color:var(--brand-2); letter-spacing:.08em; font-size:13px; text-transform:uppercase;}
-.h1{font-size: clamp(30px, 5vw, 54px); line-height:1.12; margin:10px 0 14px; font-weight:900;}
-.h-sub{max-width:820px; color:var(--muted); font-size: clamp(15px, 2.2vw, 18px)}
-
-/* animated gradient orb */
-.orb{
-  position:absolute; right:-120px; top:-120px; width:420px; height:420px; border-radius:50%;
-  filter:blur(40px); opacity:.45; z-index:-1;
-  background: radial-gradient(circle at 30% 30%, var(--brand), transparent 60%),
-              radial-gradient(circle at 70% 70%, var(--brand-2), transparent 55%);
-  animation: float 9s ease-in-out infinite alternate;
-}
-@keyframes float{
-  to{ transform: translate(-60px, 40px) rotate(8deg); filter:blur(46px); }
-}
-
-/* KPI PIPE */
-.kpi{
-  margin-top:24px; padding:16px; border-radius:var(--radius);
-  background:linear-gradient(180deg,var(--panel),var(--panel-2)); border:1px solid var(--edge);
-  box-shadow: var(--shadow);
-}
-.kpi-row{display:grid; grid-template-columns: repeat(7, 1fr); gap:10px; align-items:center}
-.kpi-chip{
-  text-align:center; padding:12px 10px; border-radius:14px; background: var(--panel);
-  border:1px solid var(--edge); font-weight:800; font-size:13px;
-}
-.kpi-arrow{display:flex; align-items:center; justify-content:center; color:#7f8cc9; font-size:20px}
-
-/* =========================================================
-   PROGRESS STEPPER
-   ========================================================= */
-.stepper{
-  position:sticky; top:58px; z-index:90; margin:14px auto 0; max-width:var(--maxw);
-  padding:10px 16px; display:flex; gap:8px; overflow:auto; scrollbar-width:none;
-  background:linear-gradient(180deg,var(--glass), transparent);
-  border-top:1px solid var(--edge); border-bottom:1px solid var(--edge);
-}
-.stepper::-webkit-scrollbar{display:none}
-.step-pill{
-  display:inline-flex; align-items:center; gap:8px; white-space:nowrap;
-  padding:8px 12px; border-radius:999px; border:1px solid var(--edge); background:var(--panel);
-  font-size:13px; color:var(--muted); text-decoration:none;
-  transition:transform .2s ease;
-}
-.step-pill.active{color:var(--ink); border-color:var(--edge-2); box-shadow: inset 0 0 0 1px var(--brand-2);}
-.step-pill:focus-visible{outline:2px solid var(--brand); outline-offset:2px}
-.step-pill:hover{transform: translateY(-1px)}
-
-/* =========================================================
-   MAIN GRID
-   ========================================================= */
-.main{max-width:var(--maxw); margin:20px auto 100px; padding:0 20px}
-.section{scroll-margin-top:120px; margin:18px 0; padding:16px; border-radius:var(--r-lg);
-  background:linear-gradient(180deg,var(--panel),var(--panel-2)); border:1px solid var(--edge); box-shadow:var(--shadow)}
-.section-head{display:flex; gap:14px; align-items:center; margin-bottom:10px}
-.step{
-  display:grid; place-items:center; width:40px; height:40px; border-radius:10px;
-  background:linear-gradient(180deg,var(--panel-2),var(--panel)); border:1px solid var(--edge-2);
-  color:var(--muted); font-weight:800;
-}
-.section h2{margin:0; font-size:22px}
-.goal{margin:6px 0 12px; color:var(--muted); font-size:15px}
-
-.grid-2{display:grid; grid-template-columns: 1.15fr .85fr; gap:16px}
-@media (max-width: 900px){ .grid-2{grid-template-columns:1fr} }
-
-.card{
-  background:linear-gradient(180deg,var(--panel-2),var(--panel)); border:1px solid var(--edge); border-radius:16px; padding:14px;
-}
-.card h4{margin:4px 0 8px; font-size:15px; color:var(--ink); letter-spacing:.02em}
-.card ul{margin:0; padding-left:18px}
-.card li{margin:8px 0}
-.outcome{display:flex; align-items:center; gap:10px; margin-top:10px; padding:10px 12px;
-  background:var(--panel); border:1px dashed var(--edge-2); border-radius:14px; color:var(--ink);}
-
-.callout{margin-top:12px; padding:12px; border-radius:16px; border:1px solid var(--edge-2);
-  background:linear-gradient(180deg,var(--panel),var(--panel-2));}
-.callout strong{color:var(--brand)}
-
-/* =========================================================
-   FLOW MAP (SVG)
-   ========================================================= */
-.flow{
-  margin-top:10px; border-radius:16px; overflow:hidden; border:1px solid var(--edge); background:var(--panel);
-}
-.flow svg{display:block; width:100%; height:auto}
-.flow .node{fill:url(#nodeGrad); stroke:var(--edge); stroke-width:1}
-.flow .label{font:700 12px/1 ui-sans-serif; fill:var(--ink)}
-.flow .arrow{stroke:#8291d9; stroke-width:1.6; marker-end:url(#arrowHead); fill:none}
-
-/* =========================================================
-   TIMELINE (SCROLL-SNAP)
-   ========================================================= */
-.timeline{
-  margin-top:10px; display:grid; grid-auto-flow:column; grid-auto-columns: minmax(240px, 1fr); gap:12px;
-  overflow:auto; padding-bottom:8px; scroll-snap-type: x mandatory;
-}
-.timeline::-webkit-scrollbar{height:8px}
-.timeline::-webkit-scrollbar-thumb{background:var(--edge); border-radius:999px}
-.ti{scroll-snap-align:start; background:linear-gradient(180deg,var(--panel-2),var(--panel)); border:1px solid var(--edge-2); border-radius:16px; padding:12px}
-.ti h5{margin:0 0 6px; font-size:13px; color:var(--muted); letter-spacing:.04em}
-
-/* =========================================================
-   ROI SANDBOX (INTERACTIVE)
-   ========================================================= */
-.sandbox{display:grid; grid-template-columns:1.1fr .9fr; gap:16px}
-@media (max-width: 900px){ .sandbox{grid-template-columns:1fr} }
-.input{
-  display:grid; grid-template-columns: 1fr 1fr; gap:12px;
-  background:linear-gradient(180deg,var(--panel-2),var(--panel)); border:1px solid var(--edge); border-radius:16px; padding:14px;
-}
-.input label{font-size:12px; color:var(--muted)}
-.input input{
-  width:100%; padding:10px 12px; border-radius:10px; border:1px solid var(--edge); background:var(--panel-2); color:var(--ink);
-}
-.input .row{display:grid; gap:6px}
-.result{
-  background:linear-gradient(180deg,var(--panel-2),var(--panel)); border:1px solid var(--edge); border-radius:16px; padding:14px;
-}
-.kpi-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:10px}
-.kpi-card{padding:12px; border-radius:12px; border:1px solid var(--edge-2); background:var(--panel)}
-.kpi-card h6{margin:0 0 4px; font-size:12px; color:var(--muted)}
-.kpi-card .num{font-weight:900; font-size:20px}
-
-/* =========================================================
-   TABLE
-   ========================================================= */
-.table{width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border-radius:16px; border:1px solid var(--edge); margin-top:10px}
-.table th, .table td{padding:12px 14px; border-bottom:1px solid var(--edge); text-align:left; vertical-align:top}
-.table th{background:var(--panel-2); color:var(--ink); font-size:14px}
-.table tr:last-child td{border-bottom:none}
-.table tr:nth-child(even) td{background:var(--panel)}
-
-/* =========================================================
-   FOOTER CTA
-   ========================================================= */
-.footer{max-width:var(--maxw); margin:30px auto 80px; padding:0 20px; display:flex; align-items:center; justify-content:space-between; color:var(--muted); font-size:14px}
-.cta{
-  display:inline-flex; gap:10px; align-items:center; padding:12px 16px; border-radius:12px;
-  background:linear-gradient(180deg,var(--panel-2),var(--panel)); border:1px solid var(--edge-2); color:var(--ink); text-decoration:none; font-weight:800;
-  box-shadow:var(--shadow); transition: transform .15s ease;
-}
-.cta:hover{transform: translateY(-1px)}
-
-/* =========================================================
-   UTILITIES
-   ========================================================= */
-.badge{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:var(--panel); border:1px solid var(--edge); color:var(--muted); font-size:12px}
-.progress{position:fixed; left:0; top:0; height:3px; width:0%; background:linear-gradient(90deg,var(--brand),var(--brand-2)); z-index:9999; box-shadow:0 0 10px rgba(124,155,255,.8)}
-.hidden-visually{position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap}
-kbd{background:var(--panel); border:1px solid var(--edge); border-bottom-width:2px; padding:2px 6px; border-radius:6px; font-size:12px}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stilo Supply – Long Beach Weed Dispensary &amp; Delivery</title>
+  <!-- Meta description for SEO -->
+  <meta name="description" content="Stilo Supply is the premier Long Beach weed dispensary and delivery service. Visit our Bixby Knolls store for fresh cannabis flower, vapes, pre‑rolls, concentrates, edibles and wellness products, or order online for same‑day weed delivery to Long Beach and nearby neighbourhoods. Enjoy first‑time deals, weekly specials and a community vibe." />
+  <!-- Schema.org structured data for a local business -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CannabisStore",
+    "name": "Stilo Supply",
+    "image": [
+      "dispensary_interior.jpg",
+      "long_beach_skyline.jpg"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "3428 Long Beach Blvd",
+      "addressLocality": "Long Beach",
+      "addressRegion": "CA",
+      "postalCode": "90807",
+      "addressCountry": "US"
+    },
+    "telephone": "+1-562-676-4014",
+    "email": "info@stilo.supply",
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "09:00", "closes": "21:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "09:00", "closes": "22:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "09:00", "closes": "21:00" }
+    ],
+    "priceRange": "$$",
+    "sameAs": "https://stilo.supply"
+  }
+  </script>
+  <!-- FontAwesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-1PtghwIIsCQP4FyjQH4HzXbU0dyLsSjOfHjs0p6FLPCiZcTG6wSpm21l0HTfZBO+U3A8OVnDyy19dD0X1E4teA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00964E;
+      --secondary: #2B4A2F;
+      --light: #E5F5E0;
+      --accent: #92C973;
+      --text-dark: #1F2E1F;
+      --text-light: #FFFFFF;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Montserrat', sans-serif; color: var(--text-dark); background-color: var(--light); line-height: 1.6; }
+    h1, h2, h3 { margin: 0 0 0.5rem 0; }
+    /* Header styling */
+    .site-header { background: var(--light); border-bottom: 1px solid var(--accent); }
+    .nav-container { max-width: 1200px; margin: 0 auto; display:flex; align-items:center; justify-content:space-between; padding:0.75rem 1rem; flex-wrap:wrap; gap:0.5rem; }
+    .nav-left,.nav-center,.nav-right { display:flex; align-items:center; }
+    .nav-left .logo { font-size:1.5rem; font-weight:700; color:var(--primary); text-decoration:none; }
+    .menu-button,.search-button,.cart-button,.help-button { background:none; border:none; padding:0.4rem; cursor:pointer; color:var(--text-dark); }
+    .menu-button i,.search-button i,.cart-button i,.help-button i,.account-link i{ font-size:1.2rem; }
+    .nav-center { flex:1 1 auto; justify-content:center; gap:0.5rem; color:var(--text-dark); font-size:0.9rem; flex-wrap:wrap; }
+    .nav-center .address-text { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:320px; }
+    .nav-right { gap:0.75rem; }
+    .help-button { background:var(--primary); color:var(--text-light); border-radius:6px; padding:0.4rem 0.75rem; font-size:0.9rem; display:flex; align-items:center; gap:0.3rem; }
+    .help-button:hover { background:var(--secondary); }
+    @media(max-width:768px){ .nav-center{ display:none; } }
+    /* Hero section */
+    .hero { background-image:url('ca1d9581-e1b0-4350-8f6b-8ddf6da1227b.png'); background-size:cover; background-position:center; position:relative; color:var(--text-light); min-height:50vh; }
+    .hero::after { content:''; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(43,74,47,0.5); }
+    .hero-content { position:relative; z-index:2; padding:4rem 2rem; max-width:700px; }
+    .hero h1 { font-size:3rem; font-weight:600; color:var(--text-light); }
+    .hero h2 { font-size:2rem; font-style:italic; color:var(--accent); margin-top:0.5rem; }
+    .hero p { font-size:1rem; color:#f5f5f5; margin-top:1rem; }
+    .cta-primary,.cta-secondary { display:inline-block; padding:0.6rem 1.2rem; border-radius:6px; font-size:0.9rem; font-weight:600; text-decoration:none; margin-top:1rem; }
+    .cta-primary { background:var(--primary); color:var(--text-light); }
+    .cta-secondary { background:var(--secondary); color:var(--text-light); }
+    .cta-primary:hover { background:#007a3d; } .cta-secondary:hover { background:#1e3624; }
+    /* Generic container */
+    .container { max-width:1200px; margin:0 auto; padding:2rem 1rem; }
+    section { padding:2rem 0; }
+    /* Story section */
+    .story .content { display:flex; flex-wrap:wrap; gap:2rem; }
+    .story .text { flex:1 1 60%; padding-right:1rem; }
+    .story .info { flex:1 1 35%; background:var(--primary); border-radius:8px; padding:1rem; color:var(--text-light); }
+    .info-item { display:flex; align-items:flex-start; margin-bottom:1rem; }
+    .info-item i { font-size:1.5rem; margin-right:0.5rem; color:var(--accent); }
+    .info-item span { font-size:0.8rem; line-height:1.3; }
+    /* Gallery */
+    .gallery .gallery-grid { display:flex; flex-wrap:wrap; gap:1rem; }
+    .gallery .photo { flex:1 1 calc(50% - 1rem); position:relative; }
+    .gallery .photo img { width:100%; display:block; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+    /* Location section */
+    .location .content{ display:flex; flex-wrap:wrap; gap:2rem; }
+    .location .directions{ flex:1 1 50%; }
+    .location .directions ul{ list-style:none; padding:0; margin:0; }
+    .location .directions li{ margin-bottom:0.5rem; position:relative; padding-left:1rem; }
+    .location .directions li::before{ content:'\\2022'; position:absolute; left:0; color:var(--primary); }
+    .location .map{ flex:1 1 50%; }
+    .location .map iframe{ width:100%; height:350px; border:0; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+    /* Products & deals */
+    .products .grid,.deals .grid{ display:flex; flex-wrap:wrap; gap:1rem; }
+    .products .card,.deals .card{ flex:1 1 calc(33.333% - 1rem); background:var(--light); border:1px solid var(--accent); border-radius:8px; padding:1rem; text-align:center; }
+    .products .card i,.deals .card i{ font-size:2rem; color:var(--primary); margin-bottom:0.5rem; }
+    .products .callout{ margin-top:1rem; background:var(--accent); padding:1rem; border-radius:8px; font-size:0.9rem; }
+    /* Testimonials & FAQ */
+    .testimonials .content{ display:flex; flex-wrap:wrap; gap:2rem; }
+    .testimonials .left{ flex:1 1 50%; }
+    .testimonials blockquote{ background:var(--accent); border-radius:8px; padding:1rem 1.5rem; margin:0 0 1rem 0; position:relative; font-style:italic; color:var(--text-dark); }
+    .testimonials blockquote i{ position:absolute; top:-10px; left:-10px; font-size:2rem; color:var(--primary); }
+    .testimonials .right{ flex:1 1 50%; }
+    .testimonials details{ margin-bottom:0.8rem; }
+    .testimonials summary{ font-size:0.95rem; font-weight:600; color:var(--primary); cursor:pointer; }
+    .testimonials summary::-webkit-details-marker{ display:none; }
+    .testimonials details p{ font-size:0.85rem; margin-top:0.3rem; }
+    /* Footer */
+    .site-footer{ background:var(--secondary); color:var(--text-light); }
+    .footer-container{ max-width:1200px; margin:0 auto; padding:3rem 1rem; display:flex; flex-wrap:wrap; gap:2rem; }
+    .footer-column{ flex:1 1 250px; }
+    .site-footer h3{ font-size:1rem; text-transform:uppercase; margin-bottom:1rem; color:var(--accent); }
+    .site-footer p{ font-size:0.85rem; margin:0 0 1rem 0; color:var(--text-light); }
+    .site-footer ul{ list-style:none; padding:0; margin:0; }
+    .site-footer li{ margin-bottom:0.5rem; }
+    .site-footer a{ color:var(--text-light); text-decoration:none; font-size:0.9rem; }
+    .site-footer a:hover{ color:var(--accent); }
+    .social-icons{ display:flex; gap:0.5rem; }
+    .social-icons a{ display:inline-flex; align-items:center; justify-content:center; width:2rem; height:2rem; border-radius:50%; background:var(--text-light); color:var(--secondary); text-decoration:none; font-size:0.9rem; }
+    .social-icons a:hover{ background:var(--accent); color:var(--secondary); }
+    /* Responsive adjustments */
+    @media(max-width:992px){ .products .card,.deals .card{ flex:1 1 calc(50% - 1rem); } }
+    @media(max-width:768px){ .story .content,.location .content,.testimonials .content{ flex-direction:column; } .story .text,.story .info,.location .directions,.location .map,.testimonials .left,.testimonials .right{ flex:1 1 100%; } .products .card,.deals .card{ flex:1 1 100%; } .gallery .photo{ flex:1 1 100%; } .footer-container{ flex-direction:column; } }
+  </style>
 </head>
 <body>
-<div class="progress" id="progress"></div>
 
-<!-- =======================================================
-     TOP BAR
-     ======================================================= -->
-<div class="topbar" role="banner">
-  <div class="topbar-inner">
-    <div class="logo" aria-label="Brand">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 12a8 8 0 0 1 16 0" stroke-width="1.4"/><path d="M4 12h7l2 4 2-4h5" stroke-width="1.4"/></svg>
-      <span>Revenue-First SEO</span>
-    </div>
-    <button class="theme-toggle" id="themeBtn" title="Toggle theme (t)" aria-pressed="false">
-      <svg id="sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.5-7.5L19 5m-14 14l1.5-1.5M5 5l1.5 1.5M19 19l-1.5-1.5"/></svg>
-      <svg id="moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      Theme
-    </button>
-  </div>
-</div>
-
-<!-- =======================================================
-     HEADER
-     ======================================================= -->
-<header class="header">
-  <span class="orb" aria-hidden="true"></span>
-  <div class="header-inner">
-    <div class="kicker">Universal SEO Workflow · Revenue Integrated</div>
-    <h1 class="h1">From Search to Sales — A Flow You Can Feel</h1>
-    <p class="h-sub">A pitch-ready system for eCommerce, SaaS, and Local — mapping <strong>SEO actions</strong> to
-      <strong>traffic</strong>, <strong>conversions</strong>, and <strong>revenue</strong> in a clear, compounding loop.</p>
-
-    <div class="badge" title="Pro tip">Keyboard: <kbd>/</kbd> to focus steps · <kbd>T</kbd> to toggle theme</div>
-
-    <div class="kpi" aria-label="SEO to Revenue pipeline">
-      <div class="kpi-row">
-        <div class="kpi-chip">SEO Action</div><div class="kpi-arrow">➜</div>
-        <div class="kpi-chip">Traffic Growth</div><div class="kpi-arrow">➜</div>
-        <div class="kpi-chip">Conversion Lift</div><div class="kpi-arrow">➜</div>
-        <div class="kpi-chip">Revenue</div>
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="nav-left">
+        <button class="menu-button" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+        <a class="logo" href="#"><span>Stilo</span></a>
+      </div>
+      <div class="nav-center">
+        <i class="fa-solid fa-map-marker-alt"></i>
+        <div class="address-text">3428 Long Beach Blvd, Long Beach, CA 90807, United States</div>
+      </div>
+      <div class="nav-right">
+        <button class="search-button" aria-label="Search"><i class="fa-solid fa-search"></i></button>
+        <a class="account-link" aria-label="Account" href="#"><i class="fa-solid fa-user"></i></a>
+        <button class="cart-button" aria-label="Cart"><i class="fa-solid fa-shopping-bag"></i></button>
+        <button class="help-button" id="my_custom_link" aria-label="Help"><i class="fa-solid fa-circle-info"></i><span>Help</span></button>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<!-- =======================================================
-     STEPPER (SCROLL-SPY)
-     ======================================================= -->
-<nav class="stepper" aria-label="Workflow steps" id="stepper">
-  <a class="step-pill" href="#s1">1. Discovery</a>
-  <a class="step-pill" href="#s2">2. Strategy</a>
-  <a class="step-pill" href="#s25">★ Revenue Map</a>
-  <a class="step-pill" href="#s3">3. On-Page</a>
-  <a class="step-pill" href="#s4">4. Content</a>
-  <a class="step-pill" href="#s5">5. Technical</a>
-  <a class="step-pill" href="#s6">6. Off-Page</a>
-  <a class="step-pill" href="#s7">7. Analytics</a>
-  <a class="step-pill" href="#s8">8. Optimization</a>
-  <a class="step-pill" href="#s9">9. Growth Loop</a>
-  <a class="step-pill" href="#addons">Add-Ons</a>
-</nav>
-
-<main class="main" id="content">
-  <!-- =====================================================
-       VISUAL FLOW MAP
-       ===================================================== -->
-  <section class="section" aria-labelledby="flowh">
-    <div class="section-head">
-      <div class="step">↯</div>
-      <div><h2 id="flowh">Visual Flow — How Value Moves</h2>
-        <p class="goal">See the story: Actions → Traffic → Conversions → Revenue → Reinvestment.</p></div>
-    </div>
-    <div class="flow" aria-hidden="false">
-      <svg viewBox="0 0 1050 240" role="img" aria-label="SEO flow">
-        <defs>
-          <linearGradient id="nodeGrad" x1="0" x2="1">
-            <stop offset="0%" stop-color="var(--panel-2)"/><stop offset="100%" stop-color="var(--panel)"/>
-          </linearGradient>
-          <marker id="arrowHead" orient="auto" markerWidth="6" markerHeight="6" refX="5" refY="3">
-            <path d="M0,0 L6,3 L0,6 z" fill="#8291d9"/>
-          </marker>
-        </defs>
-        <!-- nodes -->
-        <rect class="node" x="40"  y="70"  rx="14" ry="14" width="160" height="60"/>
-        <text class="label" x="120" y="105" text-anchor="middle">SEO Actions</text>
-
-        <rect class="node" x="260" y="70" rx="14" ry="14" width="160" height="60"/>
-        <text class="label" x="340" y="105" text-anchor="middle">Traffic Growth</text>
-
-        <rect class="node" x="480" y="70" rx="14" ry="14" width="180" height="60"/>
-        <text class="label" x="570" y="105" text-anchor="middle">Conversion Optimization</text>
-
-        <rect class="node" x="720" y="70" rx="14" ry="14" width="150" height="60"/>
-        <text class="label" x="795" y="105" text-anchor="middle">Revenue</text>
-
-        <rect class="node" x="900" y="30" rx="14" ry="14" width="110" height="140"/>
-        <text class="label" x="955" y="70"  text-anchor="middle">Re-invest</text>
-        <text class="label" x="955" y="90"  text-anchor="middle">Content</text>
-        <text class="label" x="955" y="110" text-anchor="middle">Links</text>
-        <text class="label" x="955" y="130" text-anchor="middle">CRO</text>
-
-        <!-- arrows -->
-        <path class="arrow" d="M200 100 H260"/>
-        <path class="arrow" d="M420 100 H480"/>
-        <path class="arrow" d="M660 100 H720"/>
-        <path class="arrow" d="M870 60 C900 40 900 40 900 60"/>
-        <path class="arrow" d="M900 160 C860 200 200 200 120 120" />
-      </svg>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Stilo Supply</h1>
+      <h2>Long Beach Weed Dispensary &amp; Delivery</h2>
+      <p>Bringing better weed to Long&nbsp;Beach</p>
+      <p><a href="/shop" class="cta-primary">Order Long Beach Weed Delivery</a> &nbsp;or&nbsp; <a href="/about-us" class="cta-secondary">Visit Our Bixby Knolls Dispensary</a></p>
     </div>
   </section>
 
-  <!-- 1 -->
-  <section id="s1" class="section" aria-labelledby="s1h">
-    <div class="section-head">
-      <div class="step">1</div>
-      <div>
-        <h2 id="s1h">Discovery & Audit</h2>
-        <p class="goal">Start with facts. Baseline health + untapped demand → fastest path to revenue.</p>
-      </div>
-    </div>
-    <div class="grid-2">
-      <div class="card">
-        <h4>What we assess</h4>
-        <ul>
-          <li>Technical, content, and backlink audit</li>
-          <li>Competitor benchmarking (traffic, SERP share, monetization)</li>
-          <li>Keyword gap & intent mapping across the funnel</li>
-        </ul>
-        <div class="outcome">📄 Output: SEO Health Report + Prioritized Growth Opportunities</div>
-      </div>
-      <div class="callout">
-        <strong>Why it matters:</strong> Find leaks and missed demand early, prevent wasted spend, and prioritize the highest ROI fixes.
-      </div>
-    </div>
-  </section>
-
-  <!-- 2 -->
-  <section id="s2" class="section" aria-labelledby="s2h">
-    <div class="section-head">
-      <div class="step">2</div>
-      <div>
-        <h2 id="s2h">Strategy & Roadmap</h2>
-        <p class="goal">Align to business goals. Ship in sprints. Show the path before you walk it.</p>
-      </div>
-    </div>
-    <div class="grid-2">
-      <div class="card">
-        <h4>Strategy pillars</h4>
-        <ul>
-          <li>Keyword clusters by intent & journey</li>
-          <li>Audience segmentation and offer alignment</li>
-          <li>Channel sync with sales cycle and seasonality</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h4>Execution timeline</h4>
-        <div class="timeline" role="list" aria-label="3–12 month plan">
-          <div class="ti" role="listitem">
-            <h5>Months 0–3</h5>
-            Quick wins, fixes, foundation, first content set.
-          </div>
-          <div class="ti" role="listitem">
-            <h5>Months 3–6</h5>
-            Cluster build-out, link velocity, CRO experiments.
-          </div>
-          <div class="ti" role="listitem">
-            <h5>Months 6–12</h5>
-            Scale content, authority, and compounding growth.
-          </div>
+  <!-- Story & Mission -->
+  <section class="story">
+    <div class="container">
+      <h2>Our Long Beach weed dispensary story &amp; mission</h2>
+      <div class="content">
+        <div class="text">
+          <p><strong>Stilo Supply opened its doors in the Bixby Knolls neighbourhood to give Long Beach better weed and a place to connect.</strong> Instead of feeling like another corporate chain, our shop has a familiar, community‑driven vibe. We partner directly with top cultivators—no middlemen or inflated markups—so you get fresh flower, clean concentrates and premium edibles at fair prices. We stock products we would use ourselves and welcome everyone from first‑timers to seasoned connoisseurs.</p>
         </div>
-        <div class="outcome">🧭 Output: SEO Blueprint + Milestone Plan</div>
-      </div>
-    </div>
-    <div class="callout"><strong>Why it matters:</strong> Everyone sees the big picture and how each sprint ladders to commercial outcomes.</div>
-  </section>
-
-  <!-- 2.5 -->
-  <section id="s25" class="section" aria-labelledby="s25h">
-    <div class="section-head">
-      <div class="step">★</div>
-      <div>
-        <h2 id="s25h">Revenue Mapping & Goal Forecasting</h2>
-        <p class="goal">Turn SEO into a CFO-level model. Targets you can invest behind.</p>
-      </div>
-    </div>
-
-    <div class="sandbox">
-      <div class="input" aria-labelledby="roih">
-        <div class="row"><label for="traffic">Projected Monthly Traffic</label><input id="traffic" type="number" min="0" value="50000" /></div>
-        <div class="row"><label for="ctr">CTR (as decimal, e.g., 0.25)</label><input id="ctr" type="number" min="0" step="0.01" value="0.20" /></div>
-        <div class="row"><label for="cvr">Conversion Rate (e.g., 0.03)</label><input id="cvr" type="number" min="0" step="0.001" value="0.03" /></div>
-        <div class="row"><label for="aov">AOV (₹/$/€)</label><input id="aov" type="number" min="0" step="1" value="120" /></div>
-      </div>
-      <div class="result">
-        <h4 id="roih">ROI Forecast</h4>
-        <div class="kpi-grid">
-          <div class="kpi-card">
-            <h6>Clicks / month</h6>
-            <div class="num" id="kClicks">10,000</div>
-          </div>
-          <div class="kpi-card">
-            <h6>Conversions / month</h6>
-            <div class="num" id="kConv">300</div>
-          </div>
-          <div class="kpi-card">
-            <h6>Revenue / month</h6>
-            <div class="num" id="kRev">$36,000</div>
-          </div>
-          <div class="kpi-card">
-            <h6>12-mo Projection</h6>
-            <div class="num" id="kRevYr">$432,000</div>
-          </div>
+        <div class="info">
+          <div class="info-item"><i class="fa-solid fa-clock"></i><span><strong>Hours</strong><br>Sun–Thu 9 AM–9 PM<br>Fri–Sat 9 AM–10 PM</span></div>
+          <div class="info-item"><i class="fa-solid fa-credit-card"></i><span><strong>Payments</strong><br>Cash, debit &amp; credit (ATM on site)</span></div>
+          <div class="info-item"><i class="fa-solid fa-car"></i><span><strong>Parking</strong><br>Free lot right outside</span></div>
         </div>
-        <div class="outcome" style="margin-top:12px">📊 Output: SEO → Revenue Forecast Dashboard</div>
       </div>
     </div>
-
-    <div class="callout"><strong>Why it matters:</strong> Moves the conversation from rankings to revenue, sets guardrails for ROI %, CPA, and monthly targets.</div>
   </section>
 
-  <!-- 3 -->
-  <section id="s3" class="section" aria-labelledby="s3h">
-    <div class="section-head">
-      <div class="step">3</div>
-      <div>
-        <h2 id="s3h">On-Page Optimization</h2>
-        <p class="goal">Make high-value pages rankable and conversion-ready.</p>
+  <!-- Gallery -->
+  <section class="gallery">
+    <div class="container">
+      <h2>Our place &amp; Long Beach neighbourhood</h2>
+      <p>Get a feel for the Stilo vibe. Our cosy dispensary in Bixby Knolls welcomes you with friendly budtenders and curated products, while the Long Beach skyline reminds you that you’re still in the heart of the city.</p>
+      <div class="gallery-grid">
+        <div class="photo"><img src="dispensary_interior.jpg" alt="Inside Stilo Supply dispensary"></div>
+        <div class="photo"><img src="long_beach_skyline.jpg" alt="Long Beach skyline at night"></div>
       </div>
     </div>
-    <div class="grid-2">
-      <div class="card">
-        <h4>Includes</h4>
+  </section>
+
+  <!-- Location & Directions -->
+  <section class="location">
+    <div class="container">
+      <h2>Our weed dispensary location &amp; directions</h2>
+      <div class="content">
+        <div class="directions">
+          <ul>
+            <li>10 min from Cal State Long Beach via I‑405</li>
+            <li>Just off the 405 at Long Beach Blvd exit</li>
+            <li>Accessible from Signal Hill &amp; Downtown</li>
+          </ul>
+        </div>
+        <div class="map">
+          <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-118.1939%2C33.8179%2C-118.1853%2C33.8239&layer=mapnik&marker=33.8202%2C-118.1896" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <small><a href="https://www.openstreetmap.org/?mlat=33.8202&mlon=-118.1896#map=15/33.8202/-118.1896" target="_blank" style="color:var(--primary);">View larger map</a></small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products & Shopping -->
+  <section class="products">
+    <div class="container">
+      <h2>Cannabis products &amp; shopping</h2>
+      <div class="grid">
+        <div class="card"><i class="fa-solid fa-leaf"></i><h3>Flower</h3><p>Hand‑selected buds from local cultivators like Alien Labs and Allswell—never stale, always aromatic.</p></div>
+        <div class="card"><i class="fa-solid fa-smoking"></i><h3>Pre‑rolls</h3><p>Convenient, ready‑to‑smoke joints and mini‑packs from trusted California brands.</p></div>
+        <div class="card"><i class="fa-solid fa-vial"></i><h3>Vapes &amp; Concentrates</h3><p>Clean cartridges, wax, shatter and live resin for smooth hits and potent effects.</p></div>
+        <div class="card"><i class="fa-solid fa-cookie-bite"></i><h3>Edibles</h3><p>Delicious gummies, chocolates and baked treats in precise dosages for every tolerance.</p></div>
+        <div class="card"><i class="fa-solid fa-hand-holding-heart"></i><h3>Wellness</h3><p>CBD and THCa tinctures, capsules and topicals to support relaxation and relief.</p></div>
+      </div>
+      <div class="callout"><p><strong>Shop how you like:</strong> Visit us in Bixby Knolls, order same‑day delivery across Long Beach or schedule curbside pickup—all with no markups or hidden fees.</p></div>
+    </div>
+  </section>
+
+  <!-- Deals & Rewards -->
+  <section class="deals">
+    <div class="container">
+      <h2>Cannabis deals &amp; rewards</h2>
+      <div class="grid">
+        <div class="card"><i class="fa-solid fa-gift"></i><h3>First‑timers</h3><p>Spin the wheel for up to 30 % off; 25 % off your second visit and 20 % off the third.</p></div>
+        <div class="card"><i class="fa-solid fa-star"></i><h3>Weekly specials</h3><p>New deals every Monday on flower, vapes, edibles &amp; more.</p></div>
+        <div class="card"><i class="fa-solid fa-box-open"></i><h3>Rewards programme</h3><p>Earn 1 point per $1 spent and redeem points for birthday treats and referral bonuses.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials & FAQs -->
+  <section class="testimonials">
+    <div class="container">
+      <h2>Testimonials &amp; FAQs</h2>
+      <div class="content">
+        <div class="left">
+          <blockquote><i class="fa-solid fa-quote-left"></i> "Great products, good pricing and always on time."<br><small>— Sarah, Long Beach</small></blockquote>
+          <blockquote><i class="fa-solid fa-quote-left"></i> "Quality cannabis with fast and friendly delivery."<br><small>— Miguel, Bixby Knolls</small></blockquote>
+        </div>
+        <div class="right">
+          <details><summary>Do you deliver?</summary><p>Yes—place an order online to get cannabis delivered the same day throughout Long Beach and surrounding areas.</p></details>
+          <details><summary>Are out‑of‑state visitors welcome?</summary><p>Absolutely! Bring a valid government‑issued ID proving you’re 21 or older, or a doctor’s recommendation if you’re a medical patient under 21.</p></details>
+          <details><summary>What payment methods are accepted?</summary><p>We accept cash, debit and credit cards; there’s also an ATM on site for your convenience.</p></details>
+          <details><summary>What are the first‑time customer deals?</summary><p>Spin our prize wheel for up to 30 % off your first visit, get 25 % off your second visit and 20 % off your third.</p></details>
+          <details><summary>How does the rewards programme work?</summary><p>You’ll earn 1 point per dollar spent. Redeem points for birthday deals, referral bonuses and rotating perks—plus, check back each Monday for fresh weekly specials.</p></details>
+          <details><summary>How far is Stilo Supply from Cal State Long Beach?</summary><p>We’re only about ten minutes away via the 405 freeway. Take the Long Beach Blvd exit and you’ll find us in the Bixby Knolls neighbourhood.</p></details>
+          <details><summary>Do you deliver to Signal Hill?</summary><p>Yes! We offer same‑day weed delivery to Signal Hill and most of Long Beach. Simply place your order online and we’ll bring it right to your door.</p></details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <!-- Column: Brand & Social -->
+      <div class="footer-column">
+        <div class="logo"><span style="font-size:1.5rem;font-weight:700;">Stilo</span></div>
+        <p>You must be 21 years of age or older to view or submit information to stilo.supply</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/stilosupply" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://x.com/stilosupply" target="_blank" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://www.youtube.com/@StiloSupply" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://tiktok.com/@stilo.supply" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+      <!-- Column: Site Map -->
+      <div class="footer-column">
+        <h3>Site map</h3>
         <ul>
-          <li>Meta, headings, copy aligned to intent</li>
-          <li>Internal linking & architecture improvements</li>
-          <li>Schema, mobile, Core Web Vitals & speed</li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/shop/brands">Brands</a></li>
+          <li><a href="/shop/strain">Strains</a></li>
+          <li><a href="/shop/trait">Traits</a></li>
         </ul>
-        <div class="outcome">🧩 Output: Optimized & Crawl-Ready Pages</div>
       </div>
-      <div class="callout"><strong>Revenue angle:</strong> Faster, clearer pages reduce drop-offs and lift conversion rates.</div>
-    </div>
-  </section>
-
-  <!-- 4 -->
-  <section id="s4" class="section" aria-labelledby="s4h">
-    <div class="section-head">
-      <div class="step">4</div>
-      <div>
-        <h2 id="s4h">Content Creation & Optimization</h2>
-        <p class="goal">Attract qualified demand and push users down-funnel.</p>
-      </div>
-    </div>
-    <div class="grid-2">
-      <div class="card">
-        <h4>Includes</h4>
+      <!-- Column: Quick Links -->
+      <div class="footer-column">
+        <h3>Quick links</h3>
         <ul>
-          <li>Topic clusters: blogs, hubs, landing pages</li>
-          <li>Refresh winners; prune thin content</li>
-          <li>CTAs, visuals, internal pathways</li>
+          <li><a href="/disclaimers">Disclaimer</a></li>
+          <li><a href="/term-of-services">Terms of Service</a></li>
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/meet-the-team">Meet the Team</a></li>
+          <li><a href="/about-us">About Us</a></li>
+          <li><a href="/accessibility_policy">Accessibility Policy</a></li>
+          <li><a href="/career">Career</a></li>
         </ul>
-        <div class="outcome">🗓️ Output: Content Calendar + Published Assets</div>
       </div>
-      <div class="callout"><strong>Revenue angle:</strong> Every asset has a job — capture, nurture, or convert.</div>
-    </div>
-  </section>
-
-  <!-- 5 -->
-  <section id="s5" class="section" aria-labelledby="s5h">
-    <div class="section-head">
-      <div class="step">5</div>
-      <div>
-        <h2 id="s5h">Technical SEO</h2>
-        <p class="goal">Remove crawl/index friction. Ship speed & stability.</p>
+      <!-- Column: Connect -->
+      <div class="footer-column">
+        <h3>Connect</h3>
+        <p>3428 Long Beach Blvd, Long Beach, CA 90807, United States</p>
+        <p><a href="tel:+15626764014">+1 562‑676‑4014</a></p>
+        <p><a href="mailto:info@stilo.supply">info@stilo.supply</a></p>
+        <p>License: C10-001260596-LIC</p>
       </div>
     </div>
-    <div class="grid-2">
-      <div class="card">
-        <h4>Includes</h4>
-        <ul>
-          <li>Fix crawl errors, broken/duplicate content</li>
-          <li>Improve Core Web Vitals, mobile usability</li>
-          <li>Optimize sitemaps, robots, indexation</li>
-        </ul>
-        <div class="outcome">🧪 Output: Technical Health Report</div>
-      </div>
-      <div class="callout"><strong>Revenue angle:</strong> Reliable pages keep visitors engaged and converting.</div>
-    </div>
-  </section>
+  </footer>
 
-  <!-- 6 -->
-  <section id="s6" class="section" aria-labelledby="s6h">
-    <div class="section-head">
-      <div class="step">6</div>
-      <div>
-        <h2 id="s6h">Off-Page SEO & Link Building</h2>
-        <p class="goal">Earn authority, trust, and visibility.</p>
-      </div>
-    </div>
-    <div class="grid-2">
-      <div class="card">
-        <h4>Includes</h4>
-        <ul>
-          <li>Quality backlinks via outreach & digital PR</li>
-          <li>Local citations & niche directories</li>
-          <li>Brand mentions and reviews</li>
-        </ul>
-        <div class="outcome">🔗 Output: Link Authority Growth Report</div>
-      </div>
-      <div class="callout"><strong>Revenue angle:</strong> More authority → higher rank → higher-intent traffic → more sales.</div>
-    </div>
-  </section>
-
-  <!-- 7 -->
-  <section id="s7" class="section" aria-labelledby="s7h">
-    <div class="section-head">
-      <div class="step">7</div>
-      <div>
-        <h2 id="s7h">Analytics & Reporting</h2>
-        <p class="goal">Show the impact on traffic, pipeline, and revenue.</p>
-      </div>
-    </div>
-    <div class="grid-2">
-      <div class="card">
-        <h4>Includes</h4>
-        <ul>
-          <li>GA4 + Search Console integration & goals</li>
-          <li>Keyword, traffic, and conversion tracking</li>
-          <li>Organic revenue attribution</li>
-        </ul>
-        <div class="outcome">📈 Output: Monthly Performance Dashboard</div>
-      </div>
-      <div class="callout"><strong>Revenue angle:</strong> Focus on what drives ROI and scale the winners.</div>
-    </div>
-  </section>
-
-  <!-- 8 -->
-  <section id="s8" class="section" aria-labelledby="s8h">
-    <div class="section-head">
-      <div class="step">8</div>
-      <div>
-        <h2 id="s8h">Continuous Optimization & A/B Testing</h2>
-        <p class="goal">Compound gains with iteration.</p>
-      </div>
-    </div>
-    <div class="grid-2">
-      <div class="card">
-        <h4>Includes</h4>
-        <ul>
-          <li>Quarterly refresh of top pages</li>
-          <li>A/B tests on titles, CTAs, layouts</li>
-          <li>Competitor watch & new keyword discovery</li>
-        </ul>
-        <div class="outcome">🛠️ Output: Optimization Log + Next-Phase Recommendations</div>
-      </div>
-      <div class="callout"><strong>Revenue angle:</strong> Squeeze more value from the same traffic. Protect ROI over time.</div>
-    </div>
-  </section>
-
-  <!-- 9 -->
-  <section id="s9" class="section" aria-labelledby="s9h">
-    <div class="section-head">
-      <div class="step">9</div>
-      <div>
-        <h2 id="s9h">SEO → Revenue Growth Loop</h2>
-        <p class="goal">Reinvestment fuels compounding growth.</p>
-      </div>
-    </div>
-    <div class="card">
-      <h4>Quarterly loop</h4>
-      <ul>
-        <li>Summarize revenue from organic</li>
-        <li>Spot compounding areas (content momentum, SERP coverage)</li>
-        <li>Reinvest in high-ROI levers (content, links, CRO)</li>
-      </ul>
-      <div class="outcome">♻️ Output: Quarterly ROI Summary + Future Growth Plan</div>
-    </div>
-  </section>
-
-  <!-- ADD-ONS -->
-  <section id="addons" class="section" aria-labelledby="addonsh">
-    <div class="section-head">
-      <div class="step">+</div>
-      <div>
-        <h2 id="addonsh">Optional Add-Ons for Industry Fit</h2>
-        <p class="goal">Tailor measurement to how you make money.</p>
-      </div>
-    </div>
-
-    <table class="table" role="table" aria-label="Industry Addons">
-      <thead>
-        <tr>
-          <th style="width:18%">Client Type</th>
-          <th>Revenue Integration Focus</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>E-commerce</strong></td>
-          <td>ROI by product/category, product schema, feed hygiene; track AOV, margin, refund rate, assisted conversions.</td>
-        </tr>
-        <tr>
-          <td><strong>SaaS</strong></td>
-          <td>Organic → trial/demo → paid; attribute ARR/MRR, stage conversion; track PQLs and channel LTV.</td>
-        </tr>
-        <tr>
-          <td><strong>Local Business</strong></td>
-          <td>GBP optimization, local pack coverage, review velocity; call tracking and store visit attribution; service-area hubs.</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-</main>
-
-<footer class="footer">
-  <a href="#s25" class="cta" aria-label="Jump to Revenue Mapping">Open ROI Forecast →</a>
-</footer>
-
-<script>
-/* =======================================================
-   UTIL: number format
-   ======================================================= */
-const fmt = (n, currency=false) => {
-  const v = isFinite(n) ? n : 0;
-  if(currency){
-    // auto-detect symbol by locale
-    return new Intl.NumberFormat(undefined, {style:'currency', currency:'USD', maximumFractionDigits:0}).format(v);
-  }
-  return new Intl.NumberFormat(undefined, {maximumFractionDigits:0}).format(v);
-};
-
-/* =======================================================
-   SCROLL PROGRESS
-   ======================================================= */
-const progress = document.getElementById('progress');
-const onScroll = () => {
-  const h = document.documentElement;
-  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
-  progress.style.width = scrolled + '%';
-};
-document.addEventListener('scroll', onScroll, {passive:true});
-onScroll();
-
-/* =======================================================
-   THEME TOGGLE (persist)
-   ======================================================= */
-const root = document.documentElement;
-const themeBtn = document.getElementById('themeBtn');
-const sun = document.getElementById('sun'); const moon = document.getElementById('moon');
-const savedTheme = localStorage.getItem('theme');
-if(savedTheme){ root.setAttribute('data-theme', savedTheme); if(savedTheme==='light'){sun.style.display='none'; moon.style.display='inline'} }
-themeBtn.addEventListener('click', ()=>{
-  const current = root.getAttribute('data-theme');
-  const next = current === 'light' ? '' : 'light';
-  if(next){ root.setAttribute('data-theme', next); } else { root.removeAttribute('data-theme'); }
-  localStorage.setItem('theme', next || '');
-  const isLight = next==='light';
-  sun.style.display = isLight ? 'none' : 'inline';
-  moon.style.display = isLight ? 'inline' : 'none';
-});
-
-/* Keyboard shortcuts */
-document.addEventListener('keydown', (e)=>{
-  if(e.key === 't' || e.key === 'T'){ themeBtn.click(); }
-});
-
-/* =======================================================
-   STEPPER SCROLL-SPY + QUICK FOCUS
-   ======================================================= */
-const pills = Array.from(document.querySelectorAll('.stepper .step-pill'));
-const sections = pills.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-
-const spy = () => {
-  const fromTop = window.scrollY + 140;
-  let current = null;
-  for (const sec of sections){
-    const top = sec.offsetTop;
-    const bottom = top + sec.offsetHeight;
-    if (fromTop >= top && fromTop < bottom){ current = sec; break; }
-  }
-  pills.forEach(a => a.classList.toggle('active', current && a.getAttribute('href') === '#' + current.id));
-};
-document.addEventListener('scroll', spy, {passive:true});
-window.addEventListener('resize', spy); spy();
-
-/* Focus stepper with "/" for fast nav */
-document.addEventListener('keydown', (e)=>{
-  if(e.key === '/'){
-    e.preventDefault();
-    pills[0]?.focus();
-  }
-});
-
-/* Smooth link scroll (fallback) */
-pills.forEach(a=>{
-  a.addEventListener('click', e=>{
-    const href = a.getAttribute('href');
-    if(href && href.startsWith('#')){
-      e.preventDefault();
-      document.querySelector(href)?.scrollIntoView({behavior:'smooth', block:'start'});
-      history.replaceState(null, '', href);
-    }
-  });
-});
-
-/* =======================================================
-   ROI SANDBOX CALC
-   ======================================================= */
-const elTraffic = document.getElementById('traffic');
-const elCTR     = document.getElementById('ctr');
-const elCVR     = document.getElementById('cvr');
-const elAOV     = document.getElementById('aov');
-
-const kClicks = document.getElementById('kClicks');
-const kConv   = document.getElementById('kConv');
-const kRev    = document.getElementById('kRev');
-const kRevYr  = document.getElementById('kRevYr');
-
-const calc = ()=>{
-  const traffic = parseFloat(elTraffic.value) || 0;
-  const ctr     = parseFloat(elCTR.value)     || 0;
-  const cvr     = parseFloat(elCVR.value)     || 0;
-  const aov     = parseFloat(elAOV.value)     || 0;
-
-  const clicks = traffic * ctr;
-  const conv   = clicks * cvr;
-  const rev    = conv * aov;
-  kClicks.textContent = fmt(clicks);
-  kConv.textContent   = fmt(conv);
-  kRev.textContent    = fmt(rev, true);
-  kRevYr.textContent  = fmt(rev * 12, true);
-};
-[elTraffic, elCTR, elCVR, elAOV].forEach(i=> i.addEventListener('input', calc));
-calc();
-
-/* =======================================================
-   REDUCED MOTION RESPECT
-   ======================================================= */
-const mediaMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-if(mediaMotion.matches){
-  // Remove heavy animation on orb for motion-sensitive users
-  const orb = document.querySelector('.orb');
-  if(orb) orb.style.animation = 'none';
-}
-</script>
 </body>
 </html>
