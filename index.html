@@ -52,7 +52,7 @@
       font-family: 'Montserrat', sans-serif;
       background: var(--bg);
       color: var(--text-dark);
-      line-height: 1.6;
+      line-length: 1.6;
     }
     h1, h2, h3 { margin: 0 0 0.5rem 0; }
     /* Header */
@@ -115,7 +115,7 @@
     @media (min-width: 768px) {
       .address-bar { flex: 0 0 auto; }
     }
-    /* Hero section with gradient + weed icon */
+    /* Hero section with gradient and weed icon */
     .hero {
       position: relative;
       min-height: 60vh;
@@ -156,10 +156,33 @@
       font-size: 0.95rem;
     }
     .hero-content .cta.secondary { background: var(--secondary); }
-    .hero-content .cta:hover { opacity: 0.85; }
+    /* Weed leaf on CTA hover */
+    .hero-content .cta:hover {
+      background: var(--secondary) var(--weed-icon) right 0.5rem center/20px 20px no-repeat;
+      color: var(--text-light);
+    }
+    .hero-content .cta.secondary:hover {
+      background: var(--primary) var(--weed-icon) right 0.5rem center/20px 20px no-repeat;
+      color: var(--text-light);
+    }
     section { padding: 4rem 0; }
     .section-title { text-align: center; margin-bottom: 2rem; }
-    .section-title h2 { color: var(--primary); font-size: 2rem; }
+    .section-title h2 {
+      color: var(--primary);
+      font-size: 2rem;
+      position: relative;
+      padding-left: 32px;
+    }
+    /* Weed leaf before section headings */
+    .section-title h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.15rem;
+      width: 24px;
+      height: 24px;
+      background: var(--weed-icon) center/contain no-repeat;
+    }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
     /* Story section */
     .story .columns { display: flex; flex-wrap: wrap; gap: 2rem; }
@@ -193,6 +216,20 @@
       padding: 1.5rem;
       box-shadow: var(--shadow);
       text-align: center;
+      position: relative; /* allow watermark positioning */
+    }
+    /* Subtle weed watermark on cards */
+    .card::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background: var(--weed-icon) center/contain no-repeat;
+      opacity: 0.07;
+      pointer-events: none;
     }
     .card i {
       font-size: 2rem;
@@ -232,7 +269,26 @@
       font-size: 0.95rem;
       color: var(--text-dark);
     }
-    /* Reviews & FAQ */
+    /* Weed leaf pattern backgrounds for products and deals */
+    .products, .deals {
+      position: relative;
+      overflow: hidden;
+    }
+    .products::before,
+    .deals::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--weed-icon);
+      background-size: 120px 120px;
+      background-repeat: repeat;
+      opacity: 0.03;
+      pointer-events: none;
+    }
+    /* Reviews & FAQ wrappers */
     .reviews .review-wrapper,
     .faqs .faq-wrapper {
       max-width: 800px;
@@ -259,17 +315,37 @@
       font-size: 2.5rem;
       color: var(--accent);
     }
+    /* FAQ items with weed icon */
     .faq-item { margin-bottom: 1rem; }
     .faq-item summary {
       font-weight: 600;
       color: var(--primary);
       cursor: pointer;
       font-size: 0.95rem;
+      position: relative;
+      padding-left: 26px;
+    }
+    .faq-item summary::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.25rem;
+      width: 16px;
+      height: 16px;
+      background: var(--weed-icon) center/contain no-repeat;
     }
     .faq-item summary::-webkit-details-marker { display: none; }
     .faq-item p {
       font-size: 0.85rem;
       margin-top: 0.3rem;
+    }
+    /* Section divider (weed leaf line) */
+    .section-divider {
+      width: 100%;
+      height: 40px;
+      background: var(--weed-icon) left/40px 40px repeat-x;
+      opacity: 0.1;
+      margin: 2rem 0;
     }
     /* Footer */
     footer {
@@ -343,7 +419,7 @@
     </div>
   </header>
 
-  <!-- Hero section -->
+  <!-- Hero -->
   <section class="hero">
     <div class="hero-content">
       <i class="fa-solid fa-cannabis"></i>
@@ -357,7 +433,7 @@
     </div>
   </section>
 
-  <!-- Story section -->
+  <!-- Story -->
   <section class="story">
     <div class="container">
       <div class="section-title"><h2>Our weed dispensary story &amp; mission</h2></div>
@@ -368,7 +444,7 @@
         <div class="info-column">
           <div class="info-item"><i class="fa-solid fa-clock"></i><span><strong>Hours</strong><br>Sun–Thu 9 AM–9 PM<br>Fri–Sat 9 AM–10 PM</span></div>
           <div class="info-item"><i class="fa-solid fa-credit-card"></i><span><strong>Payments</strong><br>Cash, debit &amp; credit (ATM on site)</span></div>
-          <div class="info-item"><i class="fa-solid fa-car"></i><span><strong>Parking</strong><br>Free lot right outside</span></div>
+          <div class "info-item"><i class="fa-solid fa-car"></i><span><strong>Parking</strong><br>Free lot right outside</span></div>
           <div class="info-item"><i class="fa-solid fa-id-card"></i><span><strong>Licence</strong><br>C10-001260596-LIC</span></div>
           <div class="info-item"><i class="fa-solid fa-phone"></i><span><strong>Call us</strong><br><a href="tel:+15626764014">+1 562‑676‑4014</a></span></div>
           <div class="info-item"><i class="fa-solid fa-envelope"></i><span><strong>Email</strong><br><a href="mailto:info@stilo.supply">info@stilo.supply</a></span></div>
@@ -377,7 +453,7 @@
     </div>
   </section>
 
-  <!-- Shop & neighbourhood section with CSS icons -->
+  <!-- Shop & Neighbourhood -->
   <section class="gallery">
     <div class="container">
       <div class="section-title"><h2>Our weed shop &amp; neighbourhood vibe</h2></div>
@@ -389,7 +465,7 @@
     </div>
   </section>
 
-  <!-- Location & Directions -->
+  <!-- Location -->
   <section class="location">
     <div class="container">
       <div class="section-title"><h2>Find us</h2></div>
@@ -408,6 +484,9 @@
       </div>
     </div>
   </section>
+
+  <!-- Section divider -->
+  <div class="section-divider"></div>
 
   <!-- Products & Shopping -->
   <section class="products">
@@ -436,7 +515,7 @@
     </div>
   </section>
 
-  <!-- Reviews (separate) -->
+  <!-- Reviews -->
   <section class="reviews">
     <div class="container">
       <div class="section-title"><h2>Customer reviews</h2></div>
@@ -448,7 +527,7 @@
     </div>
   </section>
 
-  <!-- FAQs (separate) -->
+  <!-- FAQs -->
   <section class="faqs">
     <div class="container">
       <div class="section-title"><h2>Frequently asked questions</h2></div>
@@ -473,7 +552,7 @@
         <div class="footer-social">
           <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
           <a href="https://www.instagram.com/stilosupply" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://x.com/stilosupply" target="_blank" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://x.com/stilosupply" target="_blank" aria-label="Twitter"><i class "fa-brands fa-x-twitter"></i></a>
           <a href="https://www.youtube.com/@StiloSupply" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
           <a href="https://tiktok.com/@stilo.supply" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
         </div>
