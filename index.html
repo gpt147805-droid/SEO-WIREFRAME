@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stilo Supply – Long Beach Weed Dispensary &amp; Delivery</title>
-  <!-- Meta description for SEO -->
-  <meta name="description" content="Stilo Supply is the premier Long Beach weed dispensary and delivery service. Visit our Bixby Knolls store for fresh cannabis flower, vapes, pre‑rolls, concentrates, edibles and wellness products, or order online for same‑day weed delivery to Long Beach and nearby neighbourhoods. Enjoy first‑time deals, weekly specials and a community vibe." />
-  <!-- Schema.org structured data for a local business -->
+  <title>Stilo Supply – Long Beach Weed Dispensary &amp; Weed Delivery</title>
+  <meta name="description" content="Stilo Supply is the premier Long Beach weed dispensary and weed delivery service. Visit our Bixby Knolls store for fresh cannabis flower, vapes, pre‑rolls, concentrates, edibles and wellness products, or order online for same‑day weed delivery to Long Beach and nearby neighbourhoods. Enjoy first‑time weed deals, weekly weed specials and a community vibe." />
+  <!-- Keyword-rich meta tags for local SEO -->
+  <meta name="keywords" content="Long Beach weed dispensary, weed delivery Long Beach, cannabis store Bixby Knolls, Long Beach cannabis shop, Stilo Supply weed, Stilo Supply Long Beach dispensary, Long Beach weed store, cannabis delivery Long Beach" />
+  <!-- Schema.org structured data for local business -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -41,152 +42,304 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #00964E;
-      --secondary: #2B4A2F;
-      --light: #E5F5E0;
-      --accent: #92C973;
-      --text-dark: #1F2E1F;
-      --text-light: #FFFFFF;
+      --bg: #f6fbf7;
+      --primary: #126742;
+      --secondary: #2f7a58;
+      --accent: #89b784;
+      --text-dark: #1f2e1f;
+      --text-light: #ffffff;
+      --card-bg: #ffffff;
+      --card-border: #d7e8d3;
+      --shadow: 0 4px 12px rgba(0,0,0,0.06);
     }
     * { box-sizing: border-box; }
-    body { margin: 0; font-family: 'Montserrat', sans-serif; color: var(--text-dark); background-color: var(--light); line-height: 1.6; }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: var(--bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
     h1, h2, h3 { margin: 0 0 0.5rem 0; }
-    /* Header styling */
-    .site-header { background: var(--light); border-bottom: 1px solid var(--accent); }
-    .nav-container { max-width: 1200px; margin: 0 auto; display:flex; align-items:center; justify-content:space-between; padding:0.75rem 1rem; flex-wrap:wrap; gap:0.5rem; }
-    .nav-left,.nav-center,.nav-right { display:flex; align-items:center; }
-    .nav-left .logo { font-size:1.5rem; font-weight:700; color:var(--primary); text-decoration:none; }
-    .menu-button,.search-button,.cart-button,.help-button { background:none; border:none; padding:0.4rem; cursor:pointer; color:var(--text-dark); }
-    .menu-button i,.search-button i,.cart-button i,.help-button i,.account-link i{ font-size:1.2rem; }
-    .nav-center { flex:1 1 auto; justify-content:center; gap:0.5rem; color:var(--text-dark); font-size:0.9rem; flex-wrap:wrap; }
-    .nav-center .address-text { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:320px; }
-    .nav-right { gap:0.75rem; }
-    .help-button { background:var(--primary); color:var(--text-light); border-radius:6px; padding:0.4rem 0.75rem; font-size:0.9rem; display:flex; align-items:center; gap:0.3rem; }
-    .help-button:hover { background:var(--secondary); }
-    @media(max-width:768px){ .nav-center{ display:none; } }
-    /* Hero section */
-    .hero { background-image:url('ca1d9581-e1b0-4350-8f6b-8ddf6da1227b.png'); background-size:cover; background-position:center; position:relative; color:var(--text-light); min-height:50vh; }
-    .hero::after { content:''; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(43,74,47,0.5); }
-    .hero-content { position:relative; z-index:2; padding:4rem 2rem; max-width:700px; }
-    .hero h1 { font-size:3rem; font-weight:600; color:var(--text-light); }
-    .hero h2 { font-size:2rem; font-style:italic; color:var(--accent); margin-top:0.5rem; }
-    .hero p { font-size:1rem; color:#f5f5f5; margin-top:1rem; }
-    .cta-primary,.cta-secondary { display:inline-block; padding:0.6rem 1.2rem; border-radius:6px; font-size:0.9rem; font-weight:600; text-decoration:none; margin-top:1rem; }
-    .cta-primary { background:var(--primary); color:var(--text-light); }
-    .cta-secondary { background:var(--secondary); color:var(--text-light); }
-    .cta-primary:hover { background:#007a3d; } .cta-secondary:hover { background:#1e3624; }
-    /* Generic container */
-    .container { max-width:1200px; margin:0 auto; padding:2rem 1rem; }
-    section { padding:2rem 0; }
+    h1 { font-size: 2.5rem; font-weight: 600; }
+    h2 { font-size: 1.8rem; font-weight: 600; }
+    h3 { font-size: 1.2rem; font-weight: 600; }
+    p { margin: 0 0 1rem 0; }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { color: var(--secondary); }
+    /* Header */
+    .site-header {
+      background: var(--card-bg);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .header-left { display: flex; align-items: center; gap: 1rem; }
+    .header-left .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .header-right { display: flex; align-items: center; gap: 0.75rem; }
+    .header-right button {
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .header-right button.help {
+      background: var(--primary);
+      color: var(--text-light);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .header-right button.help:hover { background: var(--secondary); }
+    .address-bar {
+      flex: 1 1 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-dark);
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .address-bar i { color: var(--secondary); }
+    @media (min-width: 768px) {
+      .address-bar { flex: 0 0 auto; }
+    }
+    /* Hero */
+    .hero {
+      position: relative;
+      background-image: url('ca1d9581-e1b0-4350-8f6b-8ddf6da1227b.png');
+      background-size: cover;
+      background-position: center;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(18, 103, 66, 0.6);
+    }
+    .hero-content {
+      position: relative;
+      color: var(--text-light);
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+    .hero-content h1 { font-size: 3rem; }
+    .hero-content h2 { font-size: 2rem; margin-top: 0.5rem; color: var(--accent); }
+    .hero-content .cta-group { margin-top: 1.5rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    .hero-content .cta {
+      background: var(--primary);
+      color: var(--text-light);
+      padding: 0.7rem 1.4rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .hero-content .cta.secondary { background: var(--secondary); }
+    .hero-content .cta:hover { opacity: 0.85; }
+    /* Section generic styling */
+    section { padding: 4rem 0; }
+    .section-title { text-align: center; margin-bottom: 2rem; }
+    .section-title h2 { color: var(--primary); font-size: 2rem; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
     /* Story section */
-    .story .content { display:flex; flex-wrap:wrap; gap:2rem; }
-    .story .text { flex:1 1 60%; padding-right:1rem; }
-    .story .info { flex:1 1 35%; background:var(--primary); border-radius:8px; padding:1rem; color:var(--text-light); }
-    .info-item { display:flex; align-items:flex-start; margin-bottom:1rem; }
-    .info-item i { font-size:1.5rem; margin-right:0.5rem; color:var(--accent); }
-    .info-item span { font-size:0.8rem; line-height:1.3; }
-    /* Gallery */
-    .gallery .gallery-grid { display:flex; flex-wrap:wrap; gap:1rem; }
-    .gallery .photo { flex:1 1 calc(50% - 1rem); position:relative; }
-    .gallery .photo img { width:100%; display:block; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+    .story .columns { display: flex; flex-wrap: wrap; gap: 2rem; }
+    .story .text-column { flex: 1 1 60%; }
+    .story .info-column { flex: 1 1 35%; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 8px; box-shadow: var(--shadow); padding: 1.5rem; }
+    .story .info-item { display: flex; gap: 0.7rem; margin-bottom: 1rem; align-items: flex-start; }
+    .story .info-item i { font-size: 1.4rem; color: var(--primary); margin-top: 0.1rem; }
+    .story .info-item span { font-size: 0.9rem; }
+    /* Gallery section */
+    .gallery .grid { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .gallery .grid img { width: 100%; border-radius: 8px; box-shadow: var(--shadow); }
+    .gallery .grid > div { flex: 1 1 calc(50% - 1rem); }
     /* Location section */
-    .location .content{ display:flex; flex-wrap:wrap; gap:2rem; }
-    .location .directions{ flex:1 1 50%; }
-    .location .directions ul{ list-style:none; padding:0; margin:0; }
-    .location .directions li{ margin-bottom:0.5rem; position:relative; padding-left:1rem; }
-    .location .directions li::before{ content:'\\2022'; position:absolute; left:0; color:var(--primary); }
-    .location .map{ flex:1 1 50%; }
-    .location .map iframe{ width:100%; height:350px; border:0; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
-    /* Products & deals */
-    .products .grid,.deals .grid{ display:flex; flex-wrap:wrap; gap:1rem; }
-    .products .card,.deals .card{ flex:1 1 calc(33.333% - 1rem); background:var(--light); border:1px solid var(--accent); border-radius:8px; padding:1rem; text-align:center; }
-    .products .card i,.deals .card i{ font-size:2rem; color:var(--primary); margin-bottom:0.5rem; }
-    .products .callout{ margin-top:1rem; background:var(--accent); padding:1rem; border-radius:8px; font-size:0.9rem; }
-    /* Testimonials & FAQ */
-    .testimonials .content{ display:flex; flex-wrap:wrap; gap:2rem; }
-    .testimonials .left{ flex:1 1 50%; }
-    .testimonials blockquote{ background:var(--accent); border-radius:8px; padding:1rem 1.5rem; margin:0 0 1rem 0; position:relative; font-style:italic; color:var(--text-dark); }
-    .testimonials blockquote i{ position:absolute; top:-10px; left:-10px; font-size:2rem; color:var(--primary); }
-    .testimonials .right{ flex:1 1 50%; }
-    .testimonials details{ margin-bottom:0.8rem; }
-    .testimonials summary{ font-size:0.95rem; font-weight:600; color:var(--primary); cursor:pointer; }
-    .testimonials summary::-webkit-details-marker{ display:none; }
-    .testimonials details p{ font-size:0.85rem; margin-top:0.3rem; }
+    .location .columns { display: flex; flex-wrap: wrap; gap: 2rem; }
+    .location .directions { flex: 1 1 40%; }
+    .location .directions ul { list-style: none; padding: 0; margin: 0; }
+    .location .directions li { margin-bottom: 0.8rem; position: relative; padding-left: 1.2rem; }
+    .location .directions li::before { content: '\2022'; position: absolute; left: 0; color: var(--primary); }
+    .location .map { flex: 1 1 55%; }
+    .location .map iframe { width: 100%; height: 350px; border: none; border-radius: 8px; box-shadow: var(--shadow); }
+    /* Products & Deals sections */
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .card i {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 0.6rem;
+    }
+    .callout {
+      margin-top: 2rem;
+      background: var(--accent);
+      border-radius: 6px;
+      padding: 1.2rem;
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+    }
+    /* Testimonials section */
+    .testimonials .columns { display: flex; flex-wrap: wrap; gap: 2rem; }
+    .testimonials .review-column { flex: 1 1 45%; }
+    .testimonials .faq-column { flex: 1 1 45%; }
+    blockquote {
+      background: var(--card-bg);
+      border-left: 4px solid var(--primary);
+      margin: 0 0 1.5rem 0;
+      padding: 1rem 1.5rem;
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+    blockquote small { display: block; margin-top: 0.5rem; font-weight: 500; color: var(--secondary); }
+    blockquote i {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      font-size: 2.5rem;
+      color: var(--accent);
+    }
+    .faq-item { margin-bottom: 1rem; }
+    .faq-item summary {
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item p { font-size: 0.85rem; margin-top: 0.3rem; }
     /* Footer */
-    .site-footer{ background:var(--secondary); color:var(--text-light); }
-    .footer-container{ max-width:1200px; margin:0 auto; padding:3rem 1rem; display:flex; flex-wrap:wrap; gap:2rem; }
-    .footer-column{ flex:1 1 250px; }
-    .site-footer h3{ font-size:1rem; text-transform:uppercase; margin-bottom:1rem; color:var(--accent); }
-    .site-footer p{ font-size:0.85rem; margin:0 0 1rem 0; color:var(--text-light); }
-    .site-footer ul{ list-style:none; padding:0; margin:0; }
-    .site-footer li{ margin-bottom:0.5rem; }
-    .site-footer a{ color:var(--text-light); text-decoration:none; font-size:0.9rem; }
-    .site-footer a:hover{ color:var(--accent); }
-    .social-icons{ display:flex; gap:0.5rem; }
-    .social-icons a{ display:inline-flex; align-items:center; justify-content:center; width:2rem; height:2rem; border-radius:50%; background:var(--text-light); color:var(--secondary); text-decoration:none; font-size:0.9rem; }
-    .social-icons a:hover{ background:var(--accent); color:var(--secondary); }
-    /* Responsive adjustments */
-    @media(max-width:992px){ .products .card,.deals .card{ flex:1 1 calc(50% - 1rem); } }
-    @media(max-width:768px){ .story .content,.location .content,.testimonials .content{ flex-direction:column; } .story .text,.story .info,.location .directions,.location .map,.testimonials .left,.testimonials .right{ flex:1 1 100%; } .products .card,.deals .card{ flex:1 1 100%; } .gallery .photo{ flex:1 1 100%; } .footer-container{ flex-direction:column; } }
+    footer {
+      background: var(--primary);
+      color: var(--text-light);
+      padding: 3rem 1rem;
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    footer h3 { font-size: 1rem; text-transform: uppercase; margin-bottom: 1rem; color: var(--accent); }
+    footer p { font-size: 0.8rem; margin-bottom: 1rem; }
+    footer a { color: var(--text-light); text-decoration: none; font-size: 0.85rem; }
+    footer a:hover { color: var(--accent); }
+    .footer-social { display: flex; gap: 0.6rem; margin-top: 1rem; }
+    .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      background: var(--secondary);
+      border-radius: 50%;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+    .footer-social a:hover { background: var(--accent); color: var(--primary); }
+    @media (max-width: 768px) {
+      .story .text-column, .story .info-column { flex: 1 1 100%; }
+      .location .directions, .location .map { flex: 1 1 100%; }
+      .testimonials .review-column, .testimonials .faq-column { flex: 1 1 100%; }
+    }
   </style>
 </head>
 <body>
-
-  <!-- Site Header -->
+  <!-- Header -->
   <header class="site-header">
-    <div class="nav-container">
-      <div class="nav-left">
-        <button class="menu-button" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
-        <a class="logo" href="#"><span>Stilo</span></a>
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="#" class="logo">Stilo</a>
       </div>
-      <div class="nav-center">
-        <i class="fa-solid fa-map-marker-alt"></i>
-        <div class="address-text">3428 Long Beach Blvd, Long Beach, CA 90807, United States</div>
+      <div class="address-bar">
+        <i class="fa-solid fa-location-dot"></i>
+        3428 Long Beach Blvd, Long Beach, CA 90807, United States
       </div>
-      <div class="nav-right">
-        <button class="search-button" aria-label="Search"><i class="fa-solid fa-search"></i></button>
-        <a class="account-link" aria-label="Account" href="#"><i class="fa-solid fa-user"></i></a>
-        <button class="cart-button" aria-label="Cart"><i class="fa-solid fa-shopping-bag"></i></button>
-        <button class="help-button" id="my_custom_link" aria-label="Help"><i class="fa-solid fa-circle-info"></i><span>Help</span></button>
+      <div class="header-right">
+        <button aria-label="Search"><i class="fa-solid fa-search"></i></button>
+        <button aria-label="Account"><i class="fa-solid fa-user"></i></button>
+        <button aria-label="Cart"><i class="fa-solid fa-shopping-bag"></i></button>
+        <button class="help" aria-label="Help"><i class="fa-solid fa-circle-info"></i><span>Help</span></button>
       </div>
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- Hero section -->
   <section class="hero">
+    <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>Stilo Supply</h1>
       <h2>Long Beach Weed Dispensary &amp; Delivery</h2>
-      <p>Bringing better weed to Long&nbsp;Beach</p>
-      <p><a href="/shop" class="cta-primary">Order Long Beach Weed Delivery</a> &nbsp;or&nbsp; <a href="/about-us" class="cta-secondary">Visit Our Bixby Knolls Dispensary</a></p>
+      <p>Bringing better weed to Long Beach</p>
+      <div class="cta-group">
+        <a href="/shop" class="cta">Shop Weed Online</a>
+        <a href="/about-us" class="cta secondary">Visit Our Dispensary</a>
+      </div>
     </div>
   </section>
 
-  <!-- Story & Mission -->
+  <!-- Story section -->
   <section class="story">
     <div class="container">
-      <h2>Our Long Beach weed dispensary story &amp; mission</h2>
-      <div class="content">
-        <div class="text">
-          <p><strong>Stilo Supply opened its doors in the Bixby Knolls neighbourhood to give Long Beach better weed and a place to connect.</strong> Instead of feeling like another corporate chain, our shop has a familiar, community‑driven vibe. We partner directly with top cultivators—no middlemen or inflated markups—so you get fresh flower, clean concentrates and premium edibles at fair prices. We stock products we would use ourselves and welcome everyone from first‑timers to seasoned connoisseurs.</p>
+      <div class="section-title">
+        <h2>Our weed dispensary story &amp; mission</h2>
+      </div>
+      <div class="columns">
+        <div class="text-column">
+          <p><strong>Stilo Supply opened its doors in the Bixby Knolls neighbourhood to give Long Beach better weed and a place to connect.</strong> Instead of feeling like another corporate chain, our shop has a familiar, community‑driven vibe. We partner directly with top cultivators—no middlemen or inflated markups—so you get fresh cannabis flower, clean concentrates and premium edibles at fair prices. We stock products we would use ourselves and welcome everyone from first‑timers to seasoned connoisseurs.</p>
         </div>
-        <div class="info">
+        <div class="info-column">
           <div class="info-item"><i class="fa-solid fa-clock"></i><span><strong>Hours</strong><br>Sun–Thu 9 AM–9 PM<br>Fri–Sat 9 AM–10 PM</span></div>
           <div class="info-item"><i class="fa-solid fa-credit-card"></i><span><strong>Payments</strong><br>Cash, debit &amp; credit (ATM on site)</span></div>
           <div class="info-item"><i class="fa-solid fa-car"></i><span><strong>Parking</strong><br>Free lot right outside</span></div>
+          <div class="info-item"><i class="fa-solid fa-id-card"></i><span><strong>Licence</strong><br>C10-001260596-LIC</span></div>
+          <div class="info-item"><i class="fa-solid fa-phone"></i><span><strong>Call us</strong><br><a href="tel:+15626764014">+1 562‑676‑4014</a></span></div>
+          <div class="info-item"><i class="fa-solid fa-envelope"></i><span><strong>Email</strong><br><a href="mailto:info@stilo.supply">info@stilo.supply</a></span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Gallery -->
+  <!-- Gallery section -->
   <section class="gallery">
     <div class="container">
-      <h2>Our place &amp; Long Beach neighbourhood</h2>
-      <p>Get a feel for the Stilo vibe. Our cosy dispensary in Bixby Knolls welcomes you with friendly budtenders and curated products, while the Long Beach skyline reminds you that you’re still in the heart of the city.</p>
-      <div class="gallery-grid">
-        <div class="photo"><img src="dispensary_interior.jpg" alt="Inside Stilo Supply dispensary"></div>
-        <div class="photo"><img src="long_beach_skyline.jpg" alt="Long Beach skyline at night"></div>
+      <div class="section-title"><h2>Our place &amp; neighbourhood</h2></div>
+      <p>Step inside our inviting store and see where our friendly budtenders help you pick the perfect product. Explore the Long Beach skyline and feel the unique vibe of Bixby Knolls.</p>
+      <div class="grid">
+        <div><img src="dispensary_interior.jpg" alt="Inside Stilo Supply weed dispensary"></div>
+        <div><img src="long_beach_skyline.jpg" alt="Long Beach skyline at night"></div>
       </div>
     </div>
   </section>
@@ -194,8 +347,8 @@
   <!-- Location & Directions -->
   <section class="location">
     <div class="container">
-      <h2>Our weed dispensary location &amp; directions</h2>
-      <div class="content">
+      <div class="section-title"><h2>Find us</h2></div>
+      <div class="columns">
         <div class="directions">
           <ul>
             <li>10 min from Cal State Long Beach via I‑405</li>
@@ -205,7 +358,7 @@
         </div>
         <div class="map">
           <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-118.1939%2C33.8179%2C-118.1853%2C33.8239&layer=mapnik&marker=33.8202%2C-118.1896" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          <small><a href="https://www.openstreetmap.org/?mlat=33.8202&mlon=-118.1896#map=15/33.8202/-118.1896" target="_blank" style="color:var(--primary);">View larger map</a></small>
+          <small><a href="https://www.openstreetmap.org/?mlat=33.8202&mlon=-118.1896#map=15/33.8202/-118.1896" target="_blank">View larger map</a></small>
         </div>
       </div>
     </div>
@@ -214,26 +367,26 @@
   <!-- Products & Shopping -->
   <section class="products">
     <div class="container">
-      <h2>Cannabis products &amp; shopping</h2>
-      <div class="grid">
-        <div class="card"><i class="fa-solid fa-leaf"></i><h3>Flower</h3><p>Hand‑selected buds from local cultivators like Alien Labs and Allswell—never stale, always aromatic.</p></div>
+      <div class="section-title"><h2>Weed products &amp; shopping</h2></div>
+      <div class="cards-grid">
+        <div class="card"><i class="fa-solid fa-leaf"></i><h3>Flower</h3><p>Hand‑selected buds from local cultivators like Alien Labs, Allswell and Blem—never stale, always aromatic.</p></div>
         <div class="card"><i class="fa-solid fa-smoking"></i><h3>Pre‑rolls</h3><p>Convenient, ready‑to‑smoke joints and mini‑packs from trusted California brands.</p></div>
         <div class="card"><i class="fa-solid fa-vial"></i><h3>Vapes &amp; Concentrates</h3><p>Clean cartridges, wax, shatter and live resin for smooth hits and potent effects.</p></div>
         <div class="card"><i class="fa-solid fa-cookie-bite"></i><h3>Edibles</h3><p>Delicious gummies, chocolates and baked treats in precise dosages for every tolerance.</p></div>
         <div class="card"><i class="fa-solid fa-hand-holding-heart"></i><h3>Wellness</h3><p>CBD and THCa tinctures, capsules and topicals to support relaxation and relief.</p></div>
       </div>
-      <div class="callout"><p><strong>Shop how you like:</strong> Visit us in Bixby Knolls, order same‑day delivery across Long Beach or schedule curbside pickup—all with no markups or hidden fees.</p></div>
+      <div class="callout"><strong>Shop how you like:</strong> visit us in store, order same‑day weed delivery across Long Beach or schedule weed curbside pickup—all with no markups or hidden fees.</div>
     </div>
   </section>
 
   <!-- Deals & Rewards -->
   <section class="deals">
     <div class="container">
-      <h2>Cannabis deals &amp; rewards</h2>
-      <div class="grid">
+      <div class="section-title"><h2>Deals &amp; rewards</h2></div>
+      <div class="cards-grid">
         <div class="card"><i class="fa-solid fa-gift"></i><h3>First‑timers</h3><p>Spin the wheel for up to 30 % off; 25 % off your second visit and 20 % off the third.</p></div>
-        <div class="card"><i class="fa-solid fa-star"></i><h3>Weekly specials</h3><p>New deals every Monday on flower, vapes, edibles &amp; more.</p></div>
-        <div class="card"><i class="fa-solid fa-box-open"></i><h3>Rewards programme</h3><p>Earn 1 point per $1 spent and redeem points for birthday treats and referral bonuses.</p></div>
+        <div class="card"><i class="fa-solid fa-star"></i><h3>Weekly specials</h3><p>New deals every Monday on flower, vapes, edibles and more.</p></div>
+        <div class="card"><i class="fa-solid fa-box-open"></i><h3>Rewards programme</h3><p>Earn 1 point per $1 spent and redeem points for birthday deals, referral bonuses and rotating perks.</p></div>
       </div>
     </div>
   </section>
@@ -241,33 +394,54 @@
   <!-- Testimonials & FAQs -->
   <section class="testimonials">
     <div class="container">
-      <h2>Testimonials &amp; FAQs</h2>
-      <div class="content">
-        <div class="left">
-          <blockquote><i class="fa-solid fa-quote-left"></i> "Great products, good pricing and always on time."<br><small>— Sarah, Long Beach</small></blockquote>
-          <blockquote><i class="fa-solid fa-quote-left"></i> "Quality cannabis with fast and friendly delivery."<br><small>— Miguel, Bixby Knolls</small></blockquote>
+      <div class="section-title"><h2>Reviews &amp; FAQs</h2></div>
+      <div class="columns">
+        <div class="review-column">
+          <blockquote><i class="fa-solid fa-quote-left"></i> Great products, good pricing and always on time.<small>— Sarah, Long Beach</small></blockquote>
+          <blockquote><i class="fa-solid fa-quote-left"></i> Quality cannabis with fast and friendly delivery.<small>— Miguel, Bixby Knolls</small></blockquote>
+          <blockquote><i class="fa-solid fa-quote-left"></i> Best dispensary in Long Beach! Super friendly and knowledgeable staff.<small>— Jasmine, Signal Hill</small></blockquote>
         </div>
-        <div class="right">
-          <details><summary>Do you deliver?</summary><p>Yes—place an order online to get cannabis delivered the same day throughout Long Beach and surrounding areas.</p></details>
-          <details><summary>Are out‑of‑state visitors welcome?</summary><p>Absolutely! Bring a valid government‑issued ID proving you’re 21 or older, or a doctor’s recommendation if you’re a medical patient under 21.</p></details>
-          <details><summary>What payment methods are accepted?</summary><p>We accept cash, debit and credit cards; there’s also an ATM on site for your convenience.</p></details>
-          <details><summary>What are the first‑time customer deals?</summary><p>Spin our prize wheel for up to 30 % off your first visit, get 25 % off your second visit and 20 % off your third.</p></details>
-          <details><summary>How does the rewards programme work?</summary><p>You’ll earn 1 point per dollar spent. Redeem points for birthday deals, referral bonuses and rotating perks—plus, check back each Monday for fresh weekly specials.</p></details>
-          <details><summary>How far is Stilo Supply from Cal State Long Beach?</summary><p>We’re only about ten minutes away via the 405 freeway. Take the Long Beach Blvd exit and you’ll find us in the Bixby Knolls neighbourhood.</p></details>
-          <details><summary>Do you deliver to Signal Hill?</summary><p>Yes! We offer same‑day weed delivery to Signal Hill and most of Long Beach. Simply place your order online and we’ll bring it right to your door.</p></details>
+        <div class="faq-column">
+          <details class="faq-item">
+            <summary>Do you deliver?</summary>
+            <p>Yes—place an order online to get cannabis delivered the same day throughout Long Beach and surrounding areas.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Are out‑of‑state visitors welcome?</summary>
+            <p>Absolutely! Bring a valid government‑issued ID proving you’re 21 or older, or a doctor’s recommendation if you’re a medical patient under 21.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What payment methods are accepted for weed purchases?</summary>
+            <p>We accept cash, debit and credit cards for weed purchases; there’s also an ATM on site for your convenience.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What are the first‑time customer deals?</summary>
+            <p>Spin our prize wheel for up to 30 % off your first weed purchase, get 25 % off your second visit and 20 % off your third.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How does the rewards programme work?</summary>
+            <p>You’ll earn 1 point per dollar spent on weed. Redeem points for birthday deals, referral bonuses and rotating perks—plus, check back each Monday for fresh weekly weed specials.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How far is Stilo Supply from Cal State Long Beach?</summary>
+            <p>We’re only about ten minutes away via the 405 freeway. Take the Long Beach Blvd exit and you’ll find us in the Bixby Knolls neighbourhood.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Do you deliver to Signal Hill?</summary>
+            <p>Yes! We offer same‑day weed delivery to Signal Hill and most of Long Beach. Simply place your order online and we’ll bring it right to your door.</p>
+          </details>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Site Footer -->
-  <footer class="site-footer">
+  <!-- Footer -->
+  <footer>
     <div class="footer-container">
-      <!-- Column: Brand & Social -->
-      <div class="footer-column">
-        <div class="logo"><span style="font-size:1.5rem;font-weight:700;">Stilo</span></div>
+      <div>
+        <h3>Stilo</h3>
         <p>You must be 21 years of age or older to view or submit information to stilo.supply</p>
-        <div class="social-icons">
+        <div class="footer-social">
           <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
           <a href="https://www.instagram.com/stilosupply" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
           <a href="https://x.com/stilosupply" target="_blank" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
@@ -275,8 +449,7 @@
           <a href="https://tiktok.com/@stilo.supply" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
         </div>
       </div>
-      <!-- Column: Site Map -->
-      <div class="footer-column">
+      <div>
         <h3>Site map</h3>
         <ul>
           <li><a href="/contact">Contact</a></li>
@@ -286,8 +459,7 @@
           <li><a href="/shop/trait">Traits</a></li>
         </ul>
       </div>
-      <!-- Column: Quick Links -->
-      <div class="footer-column">
+      <div>
         <h3>Quick links</h3>
         <ul>
           <li><a href="/disclaimers">Disclaimer</a></li>
@@ -299,13 +471,12 @@
           <li><a href="/career">Career</a></li>
         </ul>
       </div>
-      <!-- Column: Connect -->
-      <div class="footer-column">
+      <div>
         <h3>Connect</h3>
         <p>3428 Long Beach Blvd, Long Beach, CA 90807, United States</p>
-        <p><a href="tel:+15626764014">+1 562‑676‑4014</a></p>
+        <p><a href="tel:+15626764014">+1 562‑676‑4014</a></p>
         <p><a href="mailto:info@stilo.supply">info@stilo.supply</a></p>
-        <p>License: C10-001260596-LIC</p>
+        <p>Licence: C10-001260596-LIC</p>
       </div>
     </div>
   </footer>
